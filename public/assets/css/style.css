@@ -1,0 +1,429 @@
+html {
+	scroll-behavior: smooth;
+}
+body{
+	overflow-x: hidden;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	top: 0;
+	left: 0;
+}
+
+/*============HEADER================*/
+.navbar{
+	text-transform: capitalize;
+	display: flex;
+}
+.logo img{
+	width: 40px!important;
+	height: 40px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.navbar-brand{
+	color: #fff!important;
+	font-size: 20px;
+}
+
+.nav-link{
+	color:lightgray!important;
+}
+
+.nav-link:hover,.navbar-brand:hover{
+	color: #4aa8ff!important;
+	transition: all .3s;
+}
+/*============End header================*/
+
+
+/*=======@ swipper slide index =====*/
+.swiper-container {
+	width: 100%;
+	height: 80vh;
+}
+
+.swiper-slide img{
+	max-width: 100%;
+	height: auto;
+}
+.presetantion{
+	background-color: #589dd1;
+	padding: 20px 0;
+}
+
+/*=======End swipper slide index =====*/
+
+
+/*======= @ video =====*/
+#video .col-sm-6{
+	margin: 5px 0;
+}
+#video .col-sm-6 .footer{
+	background-color: #fff;
+}
+/*======= video =====*/
+
+
+.activity{
+	width: 90%;
+	height: 50vh;
+}
+#filter-image{
+	font-size: 13px;
+}
+/*=======End video =====*/
+
+/*=====@ slide activity====*/
+#slide-activity{
+	background: #f7f7f7;
+}
+.card{
+	margin-left: 10px;
+	width: 16rem;
+}
+.card-title{
+	text-align: center;
+}
+.slide-activity .btn{
+	width: 100%;
+	font-size: 14px;
+	background: transparent!important;
+	outline: none;
+	color: gray;
+	border: 1px solid #589dd1;
+	font-weight: 900;
+}
+.slide-activity .btn:hover{
+	background: #589dd1!important;
+	color: #fff;
+}
+/*=====End slide activity====*/
+
+
+/*=== @ about =====*/
+#about{
+	background-color: #fff;
+}
+.about-quote{
+	width: 250px;
+	height: auto;
+	position: absolute;
+	right: -7px;
+	top: 20px;
+	background-color: rgba(88, 157, 209,0.7);
+	border: 7px solid #fff;
+	padding: 8px;
+	box-shadow: 2px 2px 5px lightgray,-1px -1px 5px lightgray;
+	border-radius: 5px;
+}
+/*=== end about =====*/
+
+
+.title-slider, .about-quote{
+	font-family: "Playfair Display", serif;
+	font-size: 18px;
+	color: #fff;
+	font-style: italic;
+	font-weight: normal;
+	margin: -5px auto auto 30px;
+}
+
+.section-title{
+	padding: 30px 0;
+}
+.section-title h1{
+	text-transform: capitalize;
+	margin-top: 20px;
+	font-weight: 500;
+	font-size: 50px;
+	text-align: center;
+	color: gray;
+}
+
+/*=============student==========*/
+.student-word {
+	position: relative;
+	font-family: "Playfair Display", serif;
+	font-style: italic;
+	line-height: 2.2em;
+	color: #444;
+	background-color: #f9f9f9;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	padding: 15px 25px;
+	margin: 0;
+}
+
+.student-word:after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	right: 30px;
+	width: 0;
+	height: 0;
+	border-top: 15px solid #f9f9f9;
+	border-right: 12px solid transparent;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.student .description{
+	margin: 16px 2px;
+	padding: 2px;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	font-style: italic;
+	font-size: 13px;
+	line-height: 2.2em;
+	font-family: "Oswald", sans-serif;
+}
+.student .description img{
+	width: 50px!important;
+	height: 50px!important;
+}
+/*=============student==========*/
+
+/*============madagascar=============*/
+
+
+/*=======End Madagascar =====*/
+
+#bureau{
+	background-color: #fff;
+}
+#contact{
+	background-color: #f7f7f7;
+	margin-bottom: -45px!important;
+}
+#student{
+	background-color: #eee;
+}
+
+/*==about and president====*/
+.img-president{
+	padding: 50px;
+}
+.img-president img{
+	max-width: 100%;
+	max-height: 100%;
+}
+/*==about and president====*/
+
+/*=====bureau=========*/
+.bureau-item{
+	margin-top: 10px;
+}
+.bureau__body{
+	margin: 5px;
+	text-align: center;
+}
+.bureau__name{
+	text-transform: uppercase;
+	font-weight: bold;
+	line-height: 1.4;
+	color: #444;
+	font-size: 13px;
+	font-family: "Oswald", sans-serif;
+}
+.bureau-work{
+	font-style: italic;
+}
+/*=====End bureau=========*/
+
+.contact-description, .widget-contact__item{
+	font-size: 14px;
+}
+
+/*=========== Media query ===============*/
+@media only screen and (max-width: 600px) {
+	.swiper-container{
+		height: 50vh!important;
+	}
+	body{
+		font-size: 12px;
+	}
+	.logo img{
+		width: 40px!important;
+		height: 40px;
+		border-radius: 50%;
+		margin-right: 3px;
+	}
+	.swiper-container {
+		height: 60vh;
+	}
+	.widget-contact__item{
+		display: flex;
+	}
+	.widget-contact__text{
+		margin-left: 10px;
+	}
+	.section-title{
+		padding: 15px 0;
+	}
+	.section-title h1{
+		font-size: 30px!important;
+	}
+	.president-word{
+		margin-top: 20px!important;
+		display: block!important;
+		font-style: italic;
+	}
+	.about-quote{
+		display: none;
+	}
+	.swiper-container img{
+		height: 90%;
+	}
+	#madagaskar h3{
+		font-size: 20px;
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+	.about-quote{
+		height: 320px!important;
+		font-size: 14.5px;
+	}
+}
+
+@media only screen and (min-width: 1200px){
+	.swiper-container{
+		he ight: 83vh;
+	}
+}
+/*=========== Media query ===============*/
+
+/*======gallery===============*/
+#galllery{
+	padding: 7px;
+	margin-top: 10px;
+}
+#gallery .card-img{
+	margin: 7px;
+}
+img.image-item:hover {
+	color: #17a8b4;
+	border: 2px #17a8b4 solid;
+}
+.sidebar-gallery{
+	background-color: #aaaaaa;
+	font-family: Arial;
+}
+.gallery-title{
+	text-align: center;
+	background-color: orange;
+	text-transform: capitalize;
+	padding: 3px;
+}
+#recently-viewed-items{
+	list-style: none;
+	text-decoration: none;
+	padding: 3px 10px;
+}
+.block-content{
+	padding: 3px;
+}
+.block-content .year{
+	margin: 3px auto;
+	border-bottom: 1px #ddd solid;
+}
+.block-content .year a{
+	margin-left: 10px;
+	color: #443;
+}
+/*======End gallery===============*/
+
+
+
+/*=========footer=========*/
+.sec-title{
+	padding: 20px;
+}
+.sec-title .sec-title__title{
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+footer .quick-link, .widget-contact__item, .widget-contact__text{
+	color: #999;
+	font-size: 13px;
+}
+.footer-link p{
+	line-height: 1px;
+}
+footer .widget-contact__item{
+	display: flex;
+}
+footer .widget-contact__text{
+	margin-left: 10px;
+}
+.widget-gallery{
+	display: flex;
+	justify-content: center;
+}
+
+.widget-gallery__item img{
+	width: 100px;
+	height: 100px;
+	margin: 7px;
+}
+/**==========end footer===============*/
+
+
+
+/*actuality*/
+#wrapper-actuality, .page-actuality{
+	background-color: #fff;
+	padding: 30px 10px;
+	margin-bottom: -60px;
+}
+.actuality{
+	margin: 10px auto;
+	display: flex;
+}
+#actuality-box{
+	background-color: #fff!important;
+}
+.actuality-region{
+	font-weight: bold;
+	line-height: 1.4;
+	color: #444;
+	font-family: "Oswald", sans-serif;
+}
+
+
+/*==========login===============*/
+@media only screen and (max-width: 450px) {
+	.login-form{
+		max-width: 300px;	
+	}
+}
+@media only screen and (min-width: 768px) {
+	.carousel-item{
+		height: 540px;
+	}
+}
+
+#login-page{
+	background-color: #999;
+}
+.login-form{
+	width: 400px;
+	padding: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: 0 auto;
+	transform: translate(-50%,-50%);
+	background-color: #fff;
+	box-shadow: 1px 1px 7px lightgray, -1px -1px 7px lightgray;
+	border-radius: 7px;
+}
+.login-form h4{
+	text-align: center;
+	padding: 10px;
+	font-weight: 600;
+}
+.login-form label{
+	text-transform: capitalize;
+}
+/*==========End login===============*/
