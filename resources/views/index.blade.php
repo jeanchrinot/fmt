@@ -393,51 +393,79 @@
 
     <div class="col-lg-5 my-3 wow fadeIn">
 
-      <form class="needs-validation" novalidate>
+      <form action="{{ route('contactForm') }}" class="needs-validation" novalidate method="post">
+        {{ csrf_field() }}
+
+        <div class="message_box">
+
+          @if (\Session::has('success'))
+              <div class="alert alert-success">
+                  <ul>
+                      <li>{!! \Session::get('success') !!}</li>
+                  </ul>
+              </div>
+          @endif
+
+          @if(count($errors)>0)
+                    <div class="alert alert-danger">
+                        <ul>
+                    @foreach($errors->all() as $error)
+                        <li>
+                                {{ $error }}
+                        </li>
+                    @endforeach
+                        </ul>
+                    </div>
+             @endif
+
+        </div>
+
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Nom" name="name" required>
+          <input type="text" class="form-control" placeholder="Nom" name="name" value="{{ old('name') }}" required>
           <div class="invalid-feedback">
             Veuillez entrer votre nom 
           </div>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Prenom" name="surname" required>
+          <input type="text" class="form-control" placeholder="Prenom" name="surname" value="{{ old('surname') }}" required>
           <div class="invalid-feedback">
             Veuillez entrer votre prenom
           </div>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Telephone" name="telephone">
+          <input type="text" class="form-control" placeholder="Telephone" name="phone" value="{{ old('phone') }}">
           <div class="invalid-feedback">
             Veuillez entrer votre telehone
           </div>
         </div>
 
         <div class="form-group">
-          <input type="email" class="form-control" placeholder="email" name="email" required>
+          <input type="email" class="form-control" placeholder="email" name="email" value="{{ old('email') }}" required>
           <div class="invalid-feedback">
             Veuillez entrer votre email
           </div>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Sujet" name="subject" required>
+          <input type="text" class="form-control" placeholder="Sujet" name="subject" value="{{ old('subject') }}" required>
           <div class="invalid-feedback">
             Veuillez entrer le sujet
           </div>
         </div>
 
         <div class="form-group">
-         <textarea class="form-control" name="message" rows="4" placeholder="Message" required></textarea>
-         <div class="invalid-feedback">
-          Veuillez entrer votre message
+          <textarea class="form-control" name="message" rows="4" placeholder="Message" required>{{ old('message') }}</textarea>
+          <div class="invalid-feedback">
+            Veuillez entrer votre message
+          </div>
         </div>
-      </div>
 
 
       <button class="btn btn-primary btn-round mt-3" type="submit" style="float: right;">Envoyer</button>
+
+          
 
     </form>
 

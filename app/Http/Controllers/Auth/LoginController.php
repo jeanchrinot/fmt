@@ -28,6 +28,10 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected $redirectPath = 'admin/content';
+
+    protected $loginPath = RouteServiceProvider::LoginPath;
+
     /**
      * Create a new controller instance.
      *
