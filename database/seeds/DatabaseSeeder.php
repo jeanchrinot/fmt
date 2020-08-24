@@ -14,14 +14,17 @@ class DatabaseSeeder extends Seeder
          $this->call([
          	AboutSeeder::class,
          	SliderSeeder::class,
-         	NewsCategorySeeder::class,
-         	NewsSeeder::class,
+         	ActucategorySeeder::class,
+         	ActuSeeder::class,
             UserSeeder::class,
             StudentwordSeeder::class,
             PositionSeeder::class,
             PositionUserSeeder::class,
             GallerycategorySeeder::class,
-            GallerySeeder::class
+            GallerySeeder::class,
+            ContactSeeder::class,
+            ActivitySeeder::class,
+            VideoSeeder::class
          ]);
 
     }

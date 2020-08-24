@@ -6,7 +6,7 @@
             <!--Logo-->
             <div class="col-sm-3 pl-0 text-center header-logo">
                <div class="bg-theme mr-3 pt-3 pb-2 mb-0">
-                <h3 class="logo"><a href="#" class="text-secondary logo"><span class="small">Malagasy eto Torkia</span></a></h3>
+                <h3 class="logo"><a href="/" target="_blank" class="text-secondary logo"><span class="small">Malagasy eto Torkia</span></a></h3>
             </div>
         </div>
         <!--Logo-->
@@ -31,12 +31,12 @@
 
                 <!--Search box and avatar-->
                 <div class="col-sm-8 col-4 text-right flex-header-menu justify-content-end">
-                    <div class="search-rounded mr-3">
+                    <!-- <div class="search-rounded mr-3">
                         <input type="text" class="form-control search-box" placeholder="Entrer le mot cle.." />
-                    </div>
+                    </div> -->
                     <div class="mr-4">
                         <a class="" href="#" role="button" id="logout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="assets/img/profile.jpg" alt="Photo de profile" class="rounded-circle" width="40px" height="40px">
+                            <img src="{{ getUserImage($admin->image) }}" alt="Photo de profile" class="rounded-circle" width="40px" height="40px">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right mt-13" aria-labelledby="logout">
                             <a class="dropdown-item" href="{{ route('adminLogout') }}"><i class="fa fa-power-off pr-2"></i> Se déconnecter</a>

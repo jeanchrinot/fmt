@@ -110,7 +110,7 @@ $(document).ready(function() {
 
    })
 
-   $("#membre").change(function(){
+   /*$("#membre").change(function(){
     let typeMembre = $(this).val();
 
         if(typeMembre=="depute"){ 
@@ -125,6 +125,32 @@ $(document).ready(function() {
           }
         else{
          $(".profession").hide()
+        }
+   })*/
+
+   $("#memberType").change(function(){
+    let memberType = $(this).val();
+    let currentType = $(this).attr('currentType');
+    let editing = false;
+    if(currentType!=''){
+        editing = true;
+    }
+
+         if(memberType=="1" || memberType=="2"){ 
+            if(editing==true){
+                if (currentType==0) {
+                      $(".password").show()
+                      $("#password").attr("required","1");
+                }
+            }
+            else{
+                $(".password").show()
+                $("#password").attr("required","1");
+            }
+          }
+        else{
+        $("#password").removeAttr("required");
+         $(".password").hide()
         }
    })
 

@@ -10,6 +10,7 @@
 
     <!--Meta Responsive tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!--Favicon Icon-->
     <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
@@ -30,10 +31,13 @@
     <title>@yield('title')</title>
 </head>
 
-
+@php 
+$admin = auth()->user();
+@endphp
  
 <body>
 
+<div id="app">
 
     <!--Page loader-->
     <div class="loader-wrapper">
@@ -56,6 +60,8 @@
     </div><!--Content right-->
      
     </div> <!--Page Wrapper-->
+
+</div>
 
     @include('admin.includes.scripts')
 

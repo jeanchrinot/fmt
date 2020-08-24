@@ -12,7 +12,7 @@
       @if($sliders)
         @foreach($sliders as $slider)
           <div class="swiper-slide">
-            <img src="assets/img/gallery/{{ $slider->image }}" class="w-100">
+            <img src="{{ getImage($slider->image) }}" class="w-100">
           </div>
         @endforeach
       @endif
@@ -325,16 +325,6 @@
       @endforeach
       @endforeach
       @endif
-  <div class="col-sm-6 col-sm-4 col-md-3">
-    <div class="bureau-item">
-      <img src="assets/img/ricardo.jpg" class="card-img">
-    </div>
-    <div class="bureau__body">
-      <div class="bureau__user">
-        <h4 class="bureau__name">Rakotonirina Olvanot Jean Claude</h4><span class="text-muted bureau-work">President</span>
-      </div>
-    </div>
-  </div>
 </div>
 
 </div>

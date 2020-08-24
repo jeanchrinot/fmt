@@ -9,4 +9,5 @@
 
         <!--Custom Js Script-->
         <script src="/admin/assets/js/custom.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
         <!--Custom Js Script-->

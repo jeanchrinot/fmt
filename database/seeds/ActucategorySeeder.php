@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
-use App\NewsCategory;
+use App\Actucategory;
 
-class NewsCategorySeeder extends Seeder
+class ActucategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class NewsCategorySeeder extends Seeder
     {
         $now = Carbon::now()->toDateTimeString();
 
-        NewsCategory::insert([
+        Actucategory::insert([
         	['name'=>'Madagascar','slug'=>'madagascar','created_at'=>$now,'updated_at'=>$now],
         	['name'=>'Turquie','slug'=>'turquie','created_at'=>$now,'updated_at'=>$now],
         	['name'=>'International','slug'=>'international','created_at'=>$now,'updated_at'=>$now],

@@ -23,7 +23,7 @@
 	@endphp
 @endif
 
-<main class="col-sm-9 col-xs-12 content pt-3 pl-0">
+<main class="col-sm-9 col-xs-12 content pt-3 pl-0" id="app">
 	<h5 class="mb-3" ><strong>dashboard</strong></h5>
 
 
@@ -79,7 +79,7 @@
 		
 		<div class="row">
 			<!--Message-->
-			<div class="table-responsive">
+			<div class="table-responsive with-action" id="contact_message">
 				<div class="pt-2">
 					<h5 class="mb-4 text-center bc-header">Messages</h5>
 				</div>
@@ -94,6 +94,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						@if(count($messages))
 						@foreach($messages as $message)
 						<tr>
 							<td class="align-middle text-center">{{ $message->subject }}</td>
@@ -101,25 +102,19 @@
 							<th>{{ substr($message->message,0,39) }}{{ strlen($message->message)> 40 ? '...' : '' }}</th>
 							<td class="align-middle"><span class="badge {{ ($message->viewed) ? 'badge-success':'badge-info' }}">{{ ($message->viewed) ? 'lu':'nouveau' }}</span></td>
 							<td class=" align-middle text-center d-flex justify-content-center">
-								<button class="action btn btn-theme" data-toggle="modal" data-target="#detail_message">
-									<i class="fa fa-eye"></i>
-								</button>
-								<button class="action btn btn-danger" data-toggle="modal" data-target="#delete_message"><i class="fa fa-trash"></i></button>
+								<message-details-button msg-id="{{ $message->id }}" viewed="{{ $message->viewed }}"></message-details-button>
+
+								<delete-button item-type="message" item-id="{{ $message->id }}"></delete-button>
 							</td>
 						</tr>
 						@endforeach
+						@else
 						<tr>
-							<td class="align-middle text-center">Message 2</td>
-							<td  class="align-middle text-center">21/08/2019</td>
-							<th>Lorem ipsum dolor sit amet...</th>
-							<td class="align-middle"><span class="badge badge-info">nouveau</span></td>
-							<td class=" align-middle text-center d-flex justify-content-center">
-								<button class="action btn btn-theme view_message" data-toggle="modal" data-target="#detail_message">
-									<i class="fa fa-eye"></i>
-								</button>
-								<button class="action btn btn-danger delete_message" data-toggle="modal" data-target="#delete_message"><i class="fa fa-trash"></i></button>
-							</td>
+							<td colspan="4">Aucun message réçu.</td>
 						</tr>
+						
+						@endif
+						
 						
 					</tbody>
 				</table>
@@ -132,50 +127,11 @@
 	</div><!--End page Index-->
 
 	<!-- Modal message -->
-	<div class="modal fade" id="detail_message" tabindex="-1" role="dialog" aria-labelledby="label_message" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="label_message">Details du message</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p class="text-muted"><strong>Nom et prenom :</strong> Lorem ipsum dolor</p>
-					<p class="text-muted"><strong>Email:</strong> lorem@gmail.com</p>
-					<p class="text-muted"><strong>Telephone:</strong> 0331172082</p>
-					<p class="text-muted"><strong>Sujet :</strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-					<p class="text-muted"><strong>Message :</strong></p>
-					<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet assumenda placeat aperiam ex praesentium consequatur blanditiis delectus distinctio dicta. Dolorum!</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-info" data-dismiss="modal">Fermer</button>	
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Modal message -->
-	<div class="modal fade" id="delete_message" tabindex="-1" role="dialog" aria-labelledby="label_message" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="label_message">Suppression</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>Voulez-vous supprimer?</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Supprimer</button>	
-					<button type="button" class="btn btn-info" data-dismiss="modal">Fermer</button>	
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- <div id="messageDetails">
+		<message-details></message-details>
+	</div> -->
+	
+	@include('admin.includes.modals')
 
 </main>
 @endsection

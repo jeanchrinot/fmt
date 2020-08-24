@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Slider;
 use App\About;
-use App\News;
+use App\Actu;
 use App\Studentword;
 use App\User;
 use App\Contact;
@@ -14,11 +14,11 @@ class HomeController extends Controller
 {
     //
     public function index(){
-    	$sliders = Slider::where('featured',true)->take(3)->get();
+    	$sliders = Slider::where('featured',true)->get();
     	$abouts = About::where('featured',true)->take(1)->get();
     	$about = $abouts[0];
-        $news = News::where('featured',true)->take(10)->get();
-        $studentwords = Studentword::where('featured',true)->get();
+        $news = Actu::where('featured',true)->take(10)->get();
+        $studentwords = Studentword::with('user')->has('user')->where('featured',true)->get();
         $office_members = User::with('positions')->has('positions')->get();
         $contacts = Contact::take(2)->get();
         //dd((array)$contacts);

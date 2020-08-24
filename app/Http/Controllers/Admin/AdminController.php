@@ -94,6 +94,7 @@ class AdminController extends Controller
       }
        return Redirect::to("admin/login")->with('errMessage','Oups! You do not have access');
     }
+
  
     public function create(array $data)
     {
@@ -122,5 +123,14 @@ class AdminController extends Controller
         }
 
         return $data;
+    }
+
+    public function getMessage(Request $request,$id)
+    {
+        $message = ContactUs::where('id',$id)->firstOrFail();
+
+        //dd($message->name);
+
+        return view('admin.components.message')->with('message',$message);
     }
 }

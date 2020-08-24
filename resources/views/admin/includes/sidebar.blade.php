@@ -1,11 +1,12 @@
+
 <!--Sidebar left-->
 <div class="col-sm-3 col-xs-6 sidebar pl-0">
     <div class="inner-sidebar mr-3">
         <!--Image Avatar-->
         <div class="avatar text-center">
-            <img src="assets/img/profile.jpg" alt="" class="rounded-circle" />
-            <p><strong>Olvanot Rakotonirina</strong></p>
-            <span class="text-secondary small"><strong>Web Admin</strong></span>
+            <img src="{{ getUserImage($admin->image) }}" alt="" class="rounded-circle" />
+            <p><strong>{{ $admin->surname }} {{ $admin->name }}</strong></p>
+            <span class="text-secondary small"><strong>{{ getMemberType($admin->type) }}</strong></span>
         </div>
         <!--Image Avatar-->
 
@@ -13,14 +14,14 @@
         <div class="sidebar-menu-container">
             <ul class="sidebar-menu mt-4 mb-4">
                 <li class="parent">
-                    <a href="index.php" class=""><i class="fa fa-dashboard mr-3"> </i>
+                    <a href="{{ route('adminDashboard') }}" class=""><i class="fa fa-dashboard mr-3"> </i>
                         <span class="none">Dashboard</span>
                     </a>
                 </li>
 
 
                 <li class="parent">
-                    <a href="new-member.php" class=""><i class="fa fa-user-plus mr-3"> </i>
+                    <a href="{{ route('addMember') }}" class=""><i class="fa fa-user-plus mr-3"> </i>
                         <span class="none">Nouveau membre</span>
                     </a>
                 </li>
@@ -30,9 +31,9 @@
                         <span class="none">Membres <i class="fa fa-angle-down pull-right align-bottom"></i></span>
                     </a>
                     <ul class="children" id="tables">
-                        <li class="child"><a href="fetch-user.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Tous les membres</a></li>
-                        <li class="child"><a href="fetch-membre-bureau.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Membre de bureau</a></li>
-                        <li class="child"><a href="fetch-depute.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Deputes</a></li>
+                        <li class="child"><a href="{{ route('listMember') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Tous les membres</a></li>
+                        <li class="child"><a href="{{ route('office.list') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Membre de bureau</a></li>
+                        <li class="child"><a href="{{ route('deputy.list') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Députés</a></li>
                     </ul>
                 </li>
 
@@ -41,10 +42,9 @@
                         <span class="none">Pages <i class="fa fa-angle-down pull-right align-bottom"></i></span>
                     </a>
                     <ul class="children" id="modif-page">
-                        <li class="child"><a href="slider.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Slider</a></li>
-                        <li class="child"><a href="about.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i>A propos</a></li>
-                        <li class="child"><a href="student.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Mots des etudiants</a></li>
-                        <li class="child"><a href="modif-bureau.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Bureau</a></li>
+                        <li class="child"><a href="{{ route('page.item.list',['item'=>'slider']) }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Slider</a></li>
+                        <li class="child"><a href="{{ route('page.item.list',['item'=>'about']) }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>A propos</a></li>
+                        <li class="child"><a href="{{ route('page.item.list',['item'=>'student_words']) }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Mots des étudiants</a></li>
                     </ul>
                 </li>
 
@@ -76,8 +76,8 @@
                         <span class="none">Contacts <i class="fa fa-angle-down pull-right align-bottom"></i></span>
                     </a>
                     <ul class="children" id="Contact">
-                        <li class="child"><a href="contact-association.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Association</a></li>
-                        <li class="child"><a href="contact-consulat.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Consulat</a></li>
+                        <li class="child"><a href="{{ route('contact.show',['id'=>1]) }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Association</a></li>
+                        <li class="child"><a href="{{ route('contact.show',['id'=>2]) }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Consulat</a></li>
                     </ul>
                 </li>
             </ul>

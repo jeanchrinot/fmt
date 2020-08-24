@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\News;
+use App\Actu;
 
-class NewsSeeder extends Seeder
+class ActuSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class NewsSeeder extends Seeder
     public function run()
     {
         for($i=1;$i<=10;$i++){
-        	News::create([
+        	Actu::create([
         		'title'=>'Madagascar Actulité '.$i,
         		'details'=>'Lorem'.$i.' ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
         		'image'=>'madagascar-actualite-'.$i.'.jpg',
@@ -22,7 +22,7 @@ class NewsSeeder extends Seeder
         }
 
         for($i=1;$i<=10;$i++){
-        	News::create([
+        	Actu::create([
         		'title'=>'Turquie Actulité '.$i,
         		'details'=>'Lorem'.$i.' ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
         		'image'=>'turquie-actualite-'.$i.'.jpg',

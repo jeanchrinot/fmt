@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','surname','phone','birthday','province','phone','email', 'password','department','image'
+        'name','surname','phone','birthday','gender','province','phone','email', 'password','department','type','image'
     ];
 
     /**
@@ -48,5 +48,9 @@ class User extends Authenticatable
     public function positions()
     {
         return $this->belongsToMany('App\Position','position_user','user_id','position_id')->using('App\PositionUser')->withTimestamps();
+    }
+    public function deputies()
+    {
+        return $this->hasMany('App\Deputy');
     }
 }
