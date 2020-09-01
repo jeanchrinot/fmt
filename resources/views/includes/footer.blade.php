@@ -1,4 +1,4 @@
-<footer class="md-section bg-dark mt-5">
+<footer class="md-section bg-dark">
 
   <div class="container">
     <div class="row">
@@ -6,46 +6,24 @@
 
         <!-- sec-title -->
         <div class="sec-title">
-          <h2 class="sec-title__title">Contacts</h2><span class="sec-title__divider"></span>
+          <h2 class="sec-title__title">SUIVEZ-NOUS</h2><span class="sec-title__divider"></span>
         </div><!-- End / sec-title -->
 
-        @if($assContact)
-
-        <div class="footer-contact">
-          <div class="widget-contact__item">
-            <span class="widget-contact__title">Tel:</span>
-            <p class="widget-contact__text">{{ $assContact->phone }}</p>
-          </div>
-          <div class="widget-contact__item">
-            <span class="widget-contact__title">Fax:</span>
-            <p class="widget-contact__text">{{ $assContact->fax }}</p>
-          </div>
-          <div class="widget-contact__item">
-            <span class="widget-contact__title">Email:</span>
-            <p class="widget-contact__text"><a href="mailto:{{ $assContact->email }}">{{ $assContact->email }}</a></p>
-          </div>
-          @if($assContact->email2)!=NULL)
-          <div class="widget-contact__item">
-            <span class="widget-contact__title">Email 2:</span>
-            <p class="widget-contact__text"><a href="mailto:{{ $assContact->email2 }}">{{ $assContact->email2 }}</a></p>
-          </div>
-          @endif
-          <div class="widget-contact__item">
-            <span class="widget-contact__title">Adresse: </span>
-            <p class="widget-contact__text">
-              <a href="#">{{ $assContact->address }}</a>
-            </p>
-          </div>
-        </div>
-        @endif
+        <ul class="socials">
+              <li class="socials__item"><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+              <li class="socials__item"><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+              <li class="socials__item"><a href="#"><i class="fa fa-youtube"></i> Youtube</a></li>
+              <li class="socials__item"><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+        </ul>
+        
       </div>
 
 
       <div class="col-lg-4 wow bounce">
 
         <!-- sec-title -->
-        <div class="row sec-title">
-          <h2 class="sec-title__title">Photos</h2><span class="sec-title__divider"></span>
+        <div class="sec-title">
+          <h2 class="sec-title__title">Galerie Images</h2><span class="sec-title__divider"></span>
         </div><!-- End / sec-title -->
 
         
@@ -89,17 +67,18 @@
           <h2 class="sec-title__title">Lien rapide :</h2><span class="sec-title__divider"></span>
         </div><!-- End / sec-title -->
 
-        <p><a class="quick-link" href="index.php#about"> <i class="fa fa-angle-right"></i> A propos de nous</a></p>
+        <p><a class="quick-link" href="#about"> <i class="fa fa-angle-right"></i> A propos de nous</a></p>
         <p>
-          <a class="quick-link" href="gallery.php"> <i class="fa fa-angle-right"></i> Gallery</a>
+          <a class="quick-link" href="gallery.php"> <i class="fa fa-angle-right"></i> Galerie Image</a>
         </p>
-        <p><a class="quick-link" href="index.php#bureau"><i class="fa fa-angle-right"></i> Membres de bureau</a></p>
-        <p><a class="quick-link" href="index.php#student"><i class="fa fa-angle-right"></i> Mots des etudiants</a></p>
+        <p>
+          <a class="quick-link" href="gallery.php"> <i class="fa fa-angle-right"></i> Galerie Vidéo</a>
+        </p>
         <p>
           <a class="quick-link" href="actuality.php"><i class="fa fa-angle-right"></i>
            Actualités</a></p>
-        <p><a class="quick-link" href="#"> <i class="fa fa-angle-right"></i> Activites</a></p>
-        <p><a class="quick-link" href="index.php#contact"><i class="fa fa-angle-right"></i> Contacts</a></p>
+        <p><a class="quick-link" href="#"> <i class="fa fa-angle-right"></i> Activités</a></p>
+        <p><a class="quick-link" href="#contact"><i class="fa fa-angle-right"></i> Contacts</a></p>
 
       </div>
 

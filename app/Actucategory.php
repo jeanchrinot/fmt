@@ -8,6 +8,7 @@ class Actucategory extends Model
 {
     //
     protected $table = 'actucategories';
+    protected $fillable = ['name','slug'];
 
     public function actus()
     {

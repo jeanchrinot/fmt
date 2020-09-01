@@ -49,14 +49,19 @@
                 </li>
 
                 <li class="parent">
-                    <a href="actuality.php"><i class="fa fa-globe mr-3"> </i>
-                        <span class="none">Actualites</span>
+                    <a href="#" onclick="toggle_menu('actuality'); return false" class=""><i class="fa fa-newspaper-o   
+ mr-3"></i>
+                        <span class="none">Actualités <i class="fa fa-angle-down pull-right align-bottom"></i></span>
                     </a>
+                    <ul class="children" id="actuality">
+                        <li class="child"><a href="{{ route('actucategory.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Catégories</a></li>
+                        <li class="child"><a href="{{ route('actu.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>ActualitéS</a></li>
+                    </ul>
                 </li>
 
                 <li class="parent">
-                    <a href="activity.php"><i class="fa fa-tasks mr-3"> </i>
-                        <span class="none">Activites</span>
+                    <a href="{{ route('activity.index') }}"><i class="fa fa-tasks mr-3"> </i>
+                        <span class="none">Activités</span>
                     </a>
                 </li>
 
@@ -66,8 +71,9 @@
                         <span class="none">Galleries <i class="fa fa-angle-down pull-right align-bottom"></i></span>
                     </a>
                     <ul class="children" id="gallery">
-                        <li class="child"><a href="gallery.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Categories</a></li>
-                        <li class="child"><a href="add-gallery.php" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Nouveau image ou video</a></li>
+                        <li class="child"><a href="{{ route('gallerycategory.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Catégories</a></li>
+                        <li class="child"><a href="{{ route('gallery.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Image Galerie</a></li>
+                        <li class="child"><a href="{{ route('video.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Vidéos Galerie</a></li>
                     </ul>
                 </li>
 

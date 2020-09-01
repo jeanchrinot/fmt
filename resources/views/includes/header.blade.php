@@ -1,6 +1,6 @@
 
   <header class="wow fadeIn">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <div class="logo">
        <img src="assets/img/logo.jpg"> 
      </div>

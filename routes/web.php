@@ -55,5 +55,42 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth', 'namespace' => '
     Route::get('contact/{id}','ContactController@show')->name('contact.show');
     Route::get('contact/edit/{id}','ContactController@edit')->name('contact.edit');
     Route::patch('contact/update/{id}','ContactController@update')->name('contact.update');
+
+    Route::get('actucategory','ActucategoryController@index')->name('actucategory.index');
+    Route::get('actucategory/add','ActucategoryController@create')->name('actucategory.add');
+    Route::post('actucategory/store','ActucategoryController@store')->name('actucategory.store');
+    Route::get('actucategory/edit/{id}','ActucategoryController@edit')->name('actucategory.edit');
+    Route::patch('actucategory/update/{id}','ActucategoryController@update')->name('actucategory.update');
+
+    Route::get('actu','ActuController@index')->name('actu.index');
+    Route::get('actu/add','ActuController@create')->name('actu.add');
+    Route::post('actu/store','ActuController@store')->name('actu.store');
+    Route::get('actu/edit/{id}','ActuController@edit')->name('actu.edit');
+    Route::patch('actu/update/{id}','ActuController@update')->name('actu.update');
+
+    Route::get('activity','ActivityController@index')->name('activity.index');
+    Route::get('activity/add','ActivityController@create')->name('activity.add');
+    Route::post('activity/store','ActivityController@store')->name('activity.store');
+    Route::get('activity/edit/{id}','ActivityController@edit')->name('activity.edit');
+    Route::patch('activity/update/{id}','ActivityController@update')->name('activity.update');
+
+    Route::get('gallerycategory','GallerycategoryController@index')->name('gallerycategory.index');
+    Route::get('gallerycategory/add','GallerycategoryController@create')->name('gallerycategory.add');
+    Route::post('gallerycategory/store','GallerycategoryController@store')->name('gallerycategory.store');
+    Route::get('gallerycategory/edit/{id}','GallerycategoryController@edit')->name('gallerycategory.edit');
+    Route::patch('gallerycategory/update/{id}','GallerycategoryController@update')->name('gallerycategory.update');
+
+    Route::get('gallery','GalleryController@index')->name('gallery.index');
+    Route::get('gallery/add','GalleryController@create')->name('gallery.add');
+    Route::post('gallery/store','GalleryController@store')->name('gallery.store');
+    Route::get('gallery/edit/{id}','GalleryController@edit')->name('gallery.edit');
+    Route::patch('gallery/update/{id}','GalleryController@update')->name('gallery.update');
+
+    Route::get('video','VideoController@index')->name('video.index');
+    Route::get('video/add','VideoController@create')->name('video.add');
+    Route::post('video/store','VideoController@store')->name('video.store');
+    Route::get('video/edit/{id}','VideoController@edit')->name('video.edit');
+    Route::patch('video/update/{id}','VideoController@update')->name('video.update');
+
 });
 

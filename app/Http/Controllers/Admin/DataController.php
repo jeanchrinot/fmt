@@ -69,6 +69,24 @@ class DataController extends Controller
             case 'student_words':
                 \App\Studentword::where('id',$itemId)->delete();
                 break;
+            case 'actucategory':
+                \App\Actucategory::where('id',$itemId)->delete();
+                break;
+            case 'actu':
+                \App\Actu::where('id',$itemId)->delete();
+                break;
+            case 'activity':
+                \App\Activity::where('id',$itemId)->delete();
+                break;
+            case 'gallerycategory':
+                \App\Gallerycategory::where('id',$itemId)->delete();
+                break;
+            case 'gallery':
+                \App\Gallery::where('id',$itemId)->delete();
+                break;
+            case 'video':
+                \App\Video::where('id',$itemId)->delete();
+                break;
     		default:
     			# code...
     			break;
@@ -88,6 +106,18 @@ class DataController extends Controller
                 break;
             case 'student_words':
                 $details = \App\Studentword::where('id',$itemId)->firstOrFail();
+                break;
+            case 'actu':
+                $details = \App\Actu::where('id',$itemId)->firstOrFail();
+                break;
+            case 'activity':
+                $details = \App\Activity::where('id',$itemId)->firstOrFail();
+                break;
+            case 'gallery':
+                $details = \App\Gallery::where('id',$itemId)->firstOrFail();
+                break;
+            case 'video':
+                $details = \App\Video::where('id',$itemId)->firstOrFail();
                 break;
             default:
                 # code...

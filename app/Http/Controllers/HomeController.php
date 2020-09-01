@@ -17,7 +17,7 @@ class HomeController extends Controller
     	$sliders = Slider::where('featured',true)->get();
     	$abouts = About::where('featured',true)->take(1)->get();
     	$about = $abouts[0];
-        $news = Actu::where('featured',true)->take(10)->get();
+        $news = Actu::where('featured',true)->take(3)->get();
         $studentwords = Studentword::with('user')->has('user')->where('featured',true)->get();
         $office_members = User::with('positions')->has('positions')->get();
         $contacts = Contact::take(2)->get();
