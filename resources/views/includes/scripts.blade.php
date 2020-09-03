@@ -4,12 +4,10 @@
 
 <script src="/assets/js/jquery.magnific-popup.js"></script>
 
-<script src="https://unpkg.com/swiper/swiper-bundle.j"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script src="/assets/js/owl.carousel.min.js"></script>
-
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 <script src="/assets/js/slick.min.js"></script>
 <script src="/assets/js/wow.min.js"></script>

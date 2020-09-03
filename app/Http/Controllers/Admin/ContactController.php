@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Contact;
+use App\Social;
 use Illuminate\Support\MessageBag;
 
 class ContactController extends Controller
@@ -41,5 +42,27 @@ class ContactController extends Controller
 
     	return redirect()->route('contact.show',['id'=>$id])->with('success','Contact modifié avec succès.');
 
+    }
+
+    public function edit_social()
+    {
+        $socials = Social::where('id',1)->firstOrFail();
+        return view('admin.social_form')->with('socials',$socials);
+    }
+
+    public function update_social()
+    {
+        // update socials 
+        $data = Request()->validate([
+            'facebook'=>'nullable|string',
+            'twitter'=>'nullable|string',
+            'instagram'=>'nullable|string',
+            'youtube'=>'nullable|string'
+        ]);
+
+        $socials = Social::where('id',1)->firstOrFail();
+        $socials->update($data);
+
+        return redirect()->back()->with('success','Social Média modifié avec succès.');
     }
 }

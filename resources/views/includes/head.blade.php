@@ -15,6 +15,6 @@
   <link rel="stylesheet" type="text/css" href="/assets/css/slick-theme.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-
-  <title>@yield('title')</title>
+  @yield('styles')
+  <title>@yield('title') | Malagasy eto Torkia</title>
 </head>

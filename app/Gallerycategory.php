@@ -11,11 +11,11 @@ class Gallerycategory extends Model
 
     public function galleries()
     {
-    	return $this->belongsToMany('App\Gallery');
+    	return $this->belongsToMany('App\Gallery', 'gallerycategory_gallery','gallery_id','category_id')->using('App\GallerycategoryGallery')->withTimestamps();
     }
 
     public function videos()
     {
-    	return $this->belongsToMany('App\Video');
+    	return $this->belongsToMany('App\Video','videocategory_video','video_id','category_id')->using('App\VideocategoryVideo')->withTimestamps();
     }
 }

@@ -4,8 +4,8 @@
 @section('main')
 <!--Content right-->
 <main class="col-sm-9 mx-auto col-xs-12 content pt-3 pl-0">
-  <h5 class="mb-0" ><strong>Vous pouvez ajouter  ici les nouveaux membre</strong></h5>
-  <span class="text-secondary">Dashboard <i class="fa fa-angle-right"></i>Nouveau membre</span>
+  <h5 class="mb-0" ><strong>Vous pouvez ajouter  ici les nouveaux membre de bureau</strong></h5>
+  <span class="text-secondary">Dashboard <i class="fa fa-angle-right"></i>Nouveau membre de bureau</span>
 
   <!--modif membre bureau-->
   <div class="box-modif-student_word mt-3 mb-4 p-3 button-container bg-white border shadow-sm">

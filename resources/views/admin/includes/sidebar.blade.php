@@ -86,6 +86,11 @@
                         <li class="child"><a href="{{ route('contact.show',['id'=>2]) }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Consulat</a></li>
                     </ul>
                 </li>
+                <li class="parent">
+                    <a href="{{ route('social.edit') }}"><i class="fa fa-hashtag mr-3"> </i>
+                        <span class="none">Média Social</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!--Sidebar Naigation Menu-->

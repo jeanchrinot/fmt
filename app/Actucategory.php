@@ -12,6 +12,6 @@ class Actucategory extends Model
 
     public function actus()
     {
-    	return $this->belongsToMany('App\Actu');
+    	return $this->belongsToMany('App\Actu','actucategory_actus','actu_id','category_id')->using('App\ActucategoryActu')->withTimestamps();
     }
 }

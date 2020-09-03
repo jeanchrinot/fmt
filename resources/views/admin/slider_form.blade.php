@@ -77,7 +77,7 @@ else{
             Veuillez entrer un label d'image
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-12 col-md-4">
           <label for="image-slide-1">Image:</label>
           <input type="file" class="form-control" name="image" id="image-slide-1" {{ ($update==1) ? '' : 'required' }}>
           <div class="invalid-feedback">
@@ -103,7 +103,13 @@ else{
             Veuillez entrer une description
           </div>
         </div>
+        <div class="col-12">
+          <div class="image" style="margin-top: 20px;">
+            @isset($slider->image)<img src="{{ getImage($slider->image) }}" style="max-width: 100%;">@endisset
+          </div>
+        </div>
       </div>
+
 
      <!-- <div class="form-row">
         <div class="col-sm-6 col-md-4">

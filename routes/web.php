@@ -13,9 +13,19 @@
 // Auth::routes();
 
 Route::get('/','HomeController@index')->name('home');
-Route::get('/galerie','GalleryController@images')->name('imageGallery');
-Route::get('/videos','GalleryController@videos')->name('videoGallery');
 Route::post('/contactus','ContactFormController@store')->name('contactForm');
+
+Route::get('/galerie','PageController@gallery')->name('page.gallery');
+Route::get('/videos','PageController@video')->name('page.video');
+Route::get('/actualites/{slug?}','PageController@actuality')->name('page.actuality');
+Route::get('/activites/{slug?}','PageController@activity')->name('page.activity');
+
+Route::get('/bureau','PageController@bureau')->name('page.bureau');
+
+Route::get('/admin', function()
+{
+    return redirect()->route('adminDashboard');
+});
 
 Route::get('/admin/login', 'Admin\AdminController@login')->name('adminLogin');
 Route::post('/admin/auth', 'Admin\AdminController@auth')->name('adminAuth');
@@ -55,6 +65,8 @@ Route::group(array('prefix' => 'admin', 'middleware' => 'auth', 'namespace' => '
     Route::get('contact/{id}','ContactController@show')->name('contact.show');
     Route::get('contact/edit/{id}','ContactController@edit')->name('contact.edit');
     Route::patch('contact/update/{id}','ContactController@update')->name('contact.update');
+    Route::get('social/edit','ContactController@edit_social')->name('social.edit');
+    Route::patch('social/update','ContactController@update_social')->name('social.update');
 
     Route::get('actucategory','ActucategoryController@index')->name('actucategory.index');
     Route::get('actucategory/add','ActucategoryController@create')->name('actucategory.add');

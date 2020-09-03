@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Gallerycategory;
+use Illuminate\Validation\Rule;
 class GallerycategoryController extends Controller
 {
     
@@ -88,7 +89,10 @@ class GallerycategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = Request()->validate([
-            'name'=>'required|unique:gallerycategories'
+            'name'=>[
+                'required',
+                Rule::unique('gallerycategories')->ignore($id),
+            ]
         ]);
 
         $category = Gallerycategory::where('id',$id)->firstOrFail();

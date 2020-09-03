@@ -50001,6 +50001,14 @@ Vue.component('item-details-button', __webpack_require__(/*! ./components/ItemDe
 
 var app = new Vue({
   el: '#app'
+}); // Task Filter 
+
+$("#category").change(function () {
+  $value = this.value.toLowerCase();
+  var url = window.location.href;
+  $urlBase = url.substring(0, url.lastIndexOf("?")); //console.log($urlBase);
+
+  window.location.replace($urlBase + "?cat=" + $value);
 });
 
 /***/ }),
