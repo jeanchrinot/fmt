@@ -15,18 +15,18 @@
     <!--Favicon Icon-->
     <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="/admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/admin/css/bootstrap.min.css">
     <!--Custom style.css-->
-    <link rel="stylesheet" href="/admin/assets/css/quicksand.css">
-    <link rel="stylesheet" href="/admin/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/admin/css/quicksand.css">
+    <link rel="stylesheet" href="/assets/admin/css/style.css">
     <!--Font Awesome-->
-    <link rel="stylesheet" href="/admin/assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="/admin/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/admin/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/admin/css/fontawesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Animate CSS-->
-    <link rel="stylesheet" href="/admin/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/admin/css/animate.min.css">
     <!--Nice select -->
-    <link rel="stylesheet" href="/admin/assets/css/nice-select.css">
+    <link rel="stylesheet" href="/assets/admin/css/nice-select.css">
 
     <title>@yield('title')</title>
 </head>

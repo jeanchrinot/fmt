@@ -22,20 +22,25 @@ Route::get('/activites/{slug?}','PageController@activity')->name('page.activity'
 
 Route::get('/bureau','PageController@bureau')->name('page.bureau');
 
-Route::get('/admin', function()
-{
-    return redirect()->route('adminDashboard');
-});
-
 Route::get('/admin/login', 'Admin\AdminController@login')->name('adminLogin');
 Route::post('/admin/auth', 'Admin\AdminController@auth')->name('adminAuth');
 Route::get('/admin/logout', 'Admin\AdminController@logout')->name('adminLogout');
 //Route::get('/admin/dashboard', 'Admin\AdminController@dashboard')->name('adminDashboard');
 
+Route::get('/admin', function()
+{
+    // return redirect()->route('adminDashboard');
+    return "ok";
+});
+
 // Admin auth group
 Route::group(array('prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin'), function()
 {	
-	Route::get('/', 'AdminController@dashboard')->name('adminDashboard');
+	Route::get('/', function ()
+    {
+        return redirect()->route('adminDashboard');
+    });
+
     Route::get('dashboard', 'AdminController@dashboard')->name('adminDashboard');
     Route::post('message/{id}','DataController@getMessage')->name('getMessage');
     Route::post('message/markasread/{id}','DataController@markAsRead')->name('markAsRead');

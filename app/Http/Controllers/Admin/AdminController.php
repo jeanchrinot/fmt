@@ -19,7 +19,7 @@ class AdminController extends Controller
         //session()->put('previousUrl',url()->previous());
 
         if(Auth::check()){
-            return view('admin.dashboard');
+            return redirect()->route('adminDashboard');
         }
 
         return view('admin.login');
