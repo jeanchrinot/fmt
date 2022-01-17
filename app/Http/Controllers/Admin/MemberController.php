@@ -71,10 +71,10 @@ class MemberController extends Controller
         $data = Request()->validate($rules, $messages);
 
         if (request('image')) {
-
+            $app_storage = config('app.storage');
             $image = $request->file("image");
             $ImageName = time() . "_" . $image->getClientOriginalName();
-            $imageDestination = public_path("/../../../public_html/storage/user/");
+            $imageDestination = public_path($app_storage."/user/");
             $image->move($destinationPath, $ImageName);
 
             $uploadedImage = $destinationPath . $ImageName;
@@ -176,9 +176,10 @@ class MemberController extends Controller
         $data = Request()->validate($rules, $messages);
 
         if (request('image')) {
+            $app_storage = config('app.storage');
             $image = Request()->file("image");
             $imageName = time() . "_" . $image->getClientOriginalName();
-            $imageDestination = public_path("/../../../public_html/storage/user/");
+            $imageDestination = public_path($app_storage."/user/");
             $image->move($imageDestination, $imageName);
 
             $updatedImage = $imageDestination . $imageName;

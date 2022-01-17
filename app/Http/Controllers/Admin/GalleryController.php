@@ -61,10 +61,10 @@ class GalleryController extends Controller
         // dd($categories);
 
         if (request('image')) {
-
+            $app_storage = config('app.storage');
             $image = Request()->file("image");
             $imageName = time() . "_" . $image->getClientOriginalName();
-            $imageDestination = public_path("/../../../public_html/storage/gallery/");
+            $imageDestination = public_path($app_storage."/gallery/");
             // dd($imageDestination);
             $image->move($imageDestination, $imageName);
 
@@ -147,10 +147,10 @@ class GalleryController extends Controller
 
 
         if (request('image')) {
-
+            $app_storage = config('app.storage');
             $image = Request()->file("image");
             $imageName = time() . "_" . $image->getClientOriginalName();
-            $imageDestination = public_path("/../../../public_html/storage/gallery/");
+            $imageDestination = public_path($app_storage."/gallery/");
             $image->move($imageDestination, $imageName);
 
             $updatedImage = $imageDestination . $imageName;

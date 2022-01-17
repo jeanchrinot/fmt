@@ -217,7 +217,8 @@ class PageController extends Controller
     protected function saveImage($img, $folder, $resize)
     {
         if ($img) {
-            $imageDestination = public_path("../../fmt/storage/{$folder}/");
+            $app_storage = config('app.storage');
+            $imageDestination = public_path($app_storage."/{$folder}/");
             $imageName = time() . "_" . $img->getClientOriginalName();
             $img->move($imageDestination, $imageName);
 

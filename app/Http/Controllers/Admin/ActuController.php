@@ -61,9 +61,10 @@ class ActuController extends Controller
         //dd($categories);
 
         if (request('image')) {
+            $app_storage = config('app.storage');
             $image = Request()->file("image");
             $imageName = time() . "_" . $image->getClientOriginalName();
-            $imageDestination = public_path("/../../../public_html/storage/actuality/");
+            $imageDestination = public_path($app_storage."/actuality/");
 
             $image->move($imageDestination, $imageName);
 
@@ -159,10 +160,10 @@ class ActuController extends Controller
         }
 
         if (request('image')) {
-
+            $app_storage = config('app.storage');
             $image = Request()->file("image");
             $imageName = time() . "_" . $image->getClientOriginalName();
-            $imageDestination = public_path("/../../../public_html/storage/actuality/");
+            $imageDestination = public_path($app_storage."/actuality/");
 
             $image->move($imageDestination, $imageName);
 

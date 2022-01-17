@@ -46,6 +46,11 @@ class ActivityController extends Controller
     public function store(Request $request)
     {
 
+        // $app_storage = config('app.storage');
+        // $imageDestination = public_path($app_storage."/activity/");
+
+        // dd($imageDestination);
+
         $data = Request()->validate([
             'name' => 'required|string|max:250',
             'details' => 'required',
@@ -56,9 +61,10 @@ class ActivityController extends Controller
 
 
         if (request('image')) {
+            $app_storage = config('app.storage');
             $image = Request()->file("image");
             $imageName = time() . "_" . $image->getClientOriginalName();
-            $imageDestination = public_path("/../../../public_html/storage/activity/");
+            $imageDestination = public_path($app_storage."/activity/");
             $image->move($imageDestination, $imageName);
 
             $updatedImage = $imageDestination . $imageName;
@@ -136,10 +142,10 @@ class ActivityController extends Controller
         $activity = Activity::where('id', $id)->firstOrFail();
 
         if (request('image')) {
-
+            $app_storage = config('app.storage');
             $image = Request()->file("image");
             $imageName = time() . "_" . $image->getClientOriginalName();
-            $imageDestination = public_path("/../../../public_html/storage/activity/");
+            $imageDestination = public_path($app_storage."/activity/");
 
             $image->move($imageDestination, $imageName);
 
