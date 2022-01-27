@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +15,15 @@
 // Auth::routes();
 
 Route::get('/','HomeController@index')->name('home');
+
+Route::view("email","email.contact-email");
 Route::post('/contactus','ContactFormController@store')->name('contactForm');
 
 Route::get('/galerie','PageController@gallery')->name('page.gallery');
 Route::get('/videos','PageController@video')->name('page.video');
 Route::get('/actualites/{slug?}','PageController@actuality')->name('page.actuality');
 Route::get('/activites/{slug?}','PageController@activity')->name('page.activity');
+Route::get('/information-bourse/{slug?}','PageController@bourseInfo')->name('page.bourseInfo');
 
 Route::get('/bureau','PageController@bureau')->name('page.bureau');
 
@@ -33,7 +38,7 @@ Route::get('/admin/logout', 'Admin\AdminController@logout')->name('adminLogout')
 //Route::get('/admin/dashboard', 'Admin\AdminController@dashboard')->name('adminDashboard');
 
 // Admin auth group
-Route::group(array('prefix' => 'admin','namespace' => 'Admin'), function()
+Route::group(array('prefix' => 'admin','namespace' => 'Admin',"middleware" =>"auth"), function()
 {
 	Route::get('/', function(){
         return redirect()->route("adminDashboard");
@@ -63,6 +68,8 @@ Route::group(array('prefix' => 'admin','namespace' => 'Admin'), function()
     Route::post('page/{item}/store','PageController@store')->name('page.item.store');
     Route::get('page/{item}/edit/{id}','PageController@edit')->name('page.item.edit');
     Route::patch('page/{item}/update/{id}','PageController@update')->name('page.item.update');
+
+    Route::resource("bourse-informations",BourseController::class);
 
     Route::get('contact/{id}','ContactController@show')->name('contact.show');
     Route::get('contact/edit/{id}','ContactController@edit')->name('contact.edit');

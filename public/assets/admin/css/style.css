@@ -21,7 +21,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
 }
@@ -32,22 +37,31 @@ p {
     -webkit-font-smoothing: antialiased;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
     text-decoration: none;
 }
 
-a, a:link, a:hover {
+a,
+a:link,
+a:hover {
     color: #333;
 }
 
-label, input, textarea, select, select option {
+label,
+input,
+textarea,
+select,
+select option {
     color: #5c5c5c;
     font-weight: 500;
     line-height: 20px;
 }
 
-input, textarea, select {
-    border: 1px solid rgba(0,0,0,.15);
+input,
+textarea,
+select {
+    border: 1px solid rgba(0, 0, 0, .15);
     outline: 0 !important;
     -webkit-appearance: none;
     font-size: 14px !important;
@@ -63,17 +77,22 @@ button:focus {
     -moz-box-shadow: none !important;
 }
 
-input, input:focus,
-select, select:focus,
-textarea, textarea:focus {
+input,
+input:focus,
+select,
+select:focus,
+textarea,
+textarea:focus {
     outline: 0 !important;
     -webkit-appearance: none !important;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
 }
 
-input[type=checkbox], input[type=checkbox]:focus,
-input[type=radio], input[type=radio]:focus {
+input[type=checkbox],
+input[type=checkbox]:focus,
+input[type=radio],
+input[type=radio]:focus {
     outline: 1px !important;
     -webkit-appearance: checkbox !important;
 }
@@ -124,11 +143,15 @@ table tbody tr td {
     color: #fff;
 }
 
+
 /*======= general rules =========*/
+
 
 /*====== dasboard css rules =====*/
 
+
 /*loader css */
+
 .loader-wrapper {
     position: fixed;
     z-index: 9999;
@@ -174,7 +197,7 @@ table tbody tr td {
 
 .loader-wave:before {
     border-radius: 45%;
-    background: rgba(255,255,255,1);
+    background: rgba(255, 255, 255, 1);
     animation: animate 5s linear infinite;
     -webkit-animation: animate 5s linear infinite;
     -ms-animation: animate 5s linear infinite;
@@ -183,7 +206,7 @@ table tbody tr td {
 
 .loader-wave:after {
     border-radius: 40%;
-    background: rgba(255,255,255,.5);
+    background: rgba(255, 255, 255, .5);
     animation: animate 10s linear infinite;
     -webkit-animation: animate 10s linear infinite;
     -ms-animation: animate 10s linear infinite;
@@ -191,15 +214,22 @@ table tbody tr td {
 }
 
 @keyframes animate {
-    0% { transform: translate(-50%, -75%) rotate(0deg) }
-    100% { transform: translate(-50%, -75%) rotate(360deg) }
+    0% {
+        transform: translate(-50%, -75%) rotate(0deg)
+    }
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg)
+    }
 }
 
 @-webkit-keyframes animate {
-    0% { transform: translate(-50%, -75%) rotate(0deg) }
-    100% { transform: translate(-50%, -75%) rotate(360deg) }
+    0% {
+        transform: translate(-50%, -75%) rotate(0deg)
+    }
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg)
+    }
 }
-
 
 
 /*header css */
@@ -237,7 +267,8 @@ table tbody tr td {
     width: 240px;
 }
 
-.flex-header-menu, .flex-social {
+.flex-header-menu,
+.flex-social {
     display: flex;
 }
 
@@ -283,8 +314,14 @@ table tbody tr td {
 }
 
 @keyframes myanim {
-    from {top: -5px; left: 5px}
-    to {top: -7px; left: 7px}
+    from {
+        top: -5px;
+        left: 5px
+    }
+    to {
+        top: -7px;
+        left: 7px
+    }
 }
 
 .menu-icon #sidebar-toggle-btn:before {
@@ -304,7 +341,7 @@ table tbody tr td {
 }
 
 .dropdown {
-    position: absolute; 
+    position: absolute;
     z-index: 1000;
     display: none;
 }
@@ -317,7 +354,9 @@ table tbody tr td {
     right: -10px !important;
 }
 
-.dropdown-item media .media-body > h6, p, small {
+.dropdown-item media .media-body>h6,
+p,
+small {
     line-height: 8px;
 }
 
@@ -360,10 +399,13 @@ table tbody tr td {
     font-size: 60px;
 }
 
+
 /* main content */
+
 .main-content {
     position: relative;
 }
+
 
 /* sidebar */
 
@@ -373,7 +415,7 @@ table tbody tr td {
     transition: 200ms;
 }
 
-.sidebar > .inner-sidebar {
+.sidebar>.inner-sidebar {
     height: 100%;
     background: #2e2e3a;
 }
@@ -386,7 +428,7 @@ table tbody tr td {
     border: 3px solid #fff;
 }
 
-.avatar > p {
+.avatar>p {
     color: #fff;
 }
 
@@ -428,6 +470,7 @@ table tbody tr td {
     border: 0px;
 }
 
+
 /* style for toggling sidebar width */
 
 .sidebar.shrink-sidebar {
@@ -440,7 +483,7 @@ table tbody tr td {
     height: 40px;
 }
 
-.sidebar.shrink-sidebar .avatar p, 
+.sidebar.shrink-sidebar .avatar p,
 .sidebar.shrink-sidebar .avatar span.small {
     display: none;
 }
@@ -487,11 +530,15 @@ table tbody tr td {
     padding-left: 2px;
 }
 
+
 /* style for toggling sidebar width */
+
 
 /* sidebar */
 
+
 /* content */
+
 .content {
     transition: 200ms;
 }
@@ -571,12 +618,12 @@ table tbody tr td {
     border-bottom: 10px solid #efefef;
 }
 
-.info h2  {
+.info h2 {
     color: #313246;
     font-weight: 400;
 }
 
-.info span  {
+.info span {
     color: #666;
     font-weight: 500;
     font-size: 16px;
@@ -601,7 +648,8 @@ table tbody tr td {
     color: #efefef;
 }
 
-.user-about h4, .user-about p {
+.user-about h4,
+.user-about p {
     color: #555;
     font-weight: 500;
 }
@@ -655,12 +703,15 @@ table tbody tr td {
     height: 270px !important;
 }
 
-.ct-label.ct-horizontal.ct-end, .ct-label.ct-vertical.ct-start {
+.ct-label.ct-horizontal.ct-end,
+.ct-label.ct-vertical.ct-start {
     color: #333 !important;
     font-weight: bold !important;
 }
 
-.footer span, footer > span, a {
+.footer span,
+footer>span,
+a {
     font-size: 16px;
     color: #555;
     font-weight: 500;
@@ -669,9 +720,11 @@ table tbody tr td {
 
 /* content */
 
+
 /* dashboard 3 content */
+
 .fb-widget-top-desc h5 {
-    font-size: 16px; 
+    font-size: 16px;
     font-weight: 500;
     margin-bottom: 0px !important;
 }
@@ -710,8 +763,8 @@ table tbody tr td {
 
 @keyframes progress {
     0% {
-      stroke-dasharray: 0 100;
-  }
+        stroke-dasharray: 0 100;
+    }
 }
 
 .circular-chart.orange .circle {
@@ -754,7 +807,8 @@ table tbody tr td {
     font-weight: 500;
 }
 
-.custom-card h5, .custom-card h5 small {
+.custom-card h5,
+.custom-card h5 small {
     font-weight: 500;
     color: #5c5c5c;
 }
@@ -767,7 +821,9 @@ table tbody tr td {
     color: #5c5c5c;
 }
 
+
 /* dashboard one css rules*/
+
 .customer-circle {
     display: inline-block;
     width: 40px;
@@ -785,11 +841,15 @@ table tbody tr td {
     top: -.9rem;
 }
 
+
 /*main content */
+
 
 /*====== dasboard css rules =====*/
 
+
 /*=======buttons page css rules === */
+
 .button-container {
     line-height: 45px;
 }
@@ -798,7 +858,8 @@ table tbody tr td {
     line-height: 20px !important;
 }
 
-.button-container h6, .bc-header {
+.button-container h6,
+.bc-header {
     font-size: 18px;
     color: #5c5c5c;
     font-weight: 500;
@@ -810,7 +871,8 @@ table tbody tr td {
     font-weight: 500;
 }
 
-.button-container p, .bc-description {
+.button-container p,
+.bc-description {
     font-weight: 500;
     font-size: 14px;
     color: #5c5c5c;
@@ -826,13 +888,15 @@ table tbody tr td {
     border-radius: 50%;
 }
 
+
 /*======== accordion css rules ========== */
+
 .accordion-header {
     padding: 0px !important;
     margin: 0px;
 }
 
-.panel-title > button {
+.panel-title>button {
     font-weight: 500;
     text-decoration: none;
     display: block;
@@ -844,12 +908,12 @@ table tbody tr td {
     color: #fff;
 }
 
-.panel-title > button.collapsed {
+.panel-title>button.collapsed {
     background: #f7f7f7;
     color: #5c5c5c;
 }
 
-.panel-title > button:hover {
+.panel-title>button:hover {
     background: #0d47a1;
     color: #fff;
 }
@@ -861,24 +925,25 @@ table tbody tr td {
 }
 
 .accordion-body p {
-    line-height: 23px !important; 
+    line-height: 23px !important;
 }
 
-.panel-title > button:before {
+.panel-title>button:before {
     float: right !important;
     font-family: fontawesome;
-    content:"\f068";
+    content: "\f068";
     padding-right: 5px;
 }
 
-.panel-title > button.collapsed:before {
+.panel-title>button.collapsed:before {
     float: right !important;
-    content:"\f067";
+    content: "\f067";
 }
 
 
 /* accordion style 2 */
-.panel-title-2 > button {
+
+.panel-title-2>button {
     font-weight: 500;
     text-decoration: none;
     display: block;
@@ -890,35 +955,37 @@ table tbody tr td {
     color: #fff;
 }
 
-.panel-title-2 > button.collapsed {
+.panel-title-2>button.collapsed {
     background: #f7f7f7;
     color: #5c5c5c;
 }
 
-.panel-title-2 > button:hover {
+.panel-title-2>button:hover {
     background: #ed6a5a;
     color: #fff;
 }
 
-.panel-title-2 > button:hover {
+.panel-title-2>button:hover {
     background: #ed6a5a;
     color: #fff;
 }
 
-.panel-title-2 > button:before {
+.panel-title-2>button:before {
     float: left !important;
     font-family: fontawesome;
-    content:"\f101";
+    content: "\f101";
     padding-right: 15px;
 }
 
-.panel-title-2 > button.collapsed:before {
+.panel-title-2>button.collapsed:before {
     float: left !important;
-    content:"\f103";
+    content: "\f103";
 }
+
 
 /* accordion style 3 */
-.panel-title-3 > button {
+
+.panel-title-3>button {
     font-weight: 500;
     text-decoration: none;
     display: block;
@@ -930,31 +997,31 @@ table tbody tr td {
     color: #fff;
 }
 
-.panel-title-3 > button.collapsed {
+.panel-title-3>button.collapsed {
     background: #f7f7f7;
     color: #5c5c5c;
 }
 
-.panel-title-3 > button:hover {
+.panel-title-3>button:hover {
     background: #29a744;
     color: #fff;
 }
 
-.panel-title-3 > button:hover {
+.panel-title-3>button:hover {
     background: #29a744;
     color: #fff;
 }
 
-.panel-title-3 > button:before {
+.panel-title-3>button:before {
     float: left !important;
     font-family: fontawesome;
-    content:"\f105";
+    content: "\f105";
     padding-right: 15px;
 }
 
-.panel-title-3 > button.collapsed:before {
+.panel-title-3>button.collapsed:before {
     float: left !important;
-    content:"\f107";
+    content: "\f107";
 }
 
 
@@ -976,7 +1043,9 @@ table tbody tr td {
     font-size: 28px;
 }
 
+
 /*======icons css rules =======*/
+
 
 /*===========login page css rules===========*/
 
@@ -988,7 +1057,7 @@ table tbody tr td {
 }
 
 .login-wrapper {
-    background:rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7);
     height: 100vh;
     position: relative;
 }
@@ -1048,9 +1117,7 @@ table tbody tr td {
 }
 
 
-
 /*==login and register page css rules=====*/
-
 
 
 /*==============error 404 rules ==================*/
@@ -1062,6 +1129,7 @@ table tbody tr td {
     line-height: 160px;
 }
 
+
 /*==============error 404 rules ==================*/
 
 @media only screen and (max-width: 1074px) {
@@ -1069,7 +1137,6 @@ table tbody tr td {
         max-width: 85px !important;
         min-width: 85px !important;
     }
-
     .sidebar.sidebar.shrink-sidebar {
         max-width: 250px !important;
         min-width: 250px !important;
@@ -1079,54 +1146,42 @@ table tbody tr td {
         top: 0px;
         height: 100%;
     }
-    
     .sidebar .avatar img {
         width: 40px;
         height: 40px;
     }
-
     .sidebar.shrink-sidebar .avatar img {
         width: 50px;
         height: 50px;
     }
-    
-    .sidebar .avatar p, 
+    .sidebar .avatar p,
     .sidebar .avatar span.small {
         display: none;
     }
-
-    .sidebar.shrink-sidebar .avatar p, 
+    .sidebar.shrink-sidebar .avatar p,
     .sidebar.shrink-sidebar .avatar span.small {
         display: block;
     }
-    
     .sidebar .sidebar-menu li {
         position: relative !important;
         border-bottom: 1px solid #313246;
     }
-    
     .sidebar .sidebar-menu li a {
         padding-top: 10px;
         pointer-events: none;
     }
-
-
     .sidebar.shrink-sidebar .sidebar-menu li a {
         pointer-events: auto;
     }
-    
     .sidebar .sidebar-menu li a:hover {
         padding-left: 15px;
     }
-
     .sidebar .sidebar-menu li a span.none {
         display: none;
     }
-    
     .sidebar.shrink-sidebar .sidebar-menu li a span.none {
         display: initial;
     }
-    
     .sidebar .sidebar-menu li ul {
         position: absolute;
         z-index: 1000;
@@ -1134,47 +1189,36 @@ table tbody tr td {
         left: 50px;
         width: 270px !important;
     }
-
     .sidebar.shrink-sidebar .sidebar-menu li ul {
         position: relative;
         left: 0px;
         z-index: 0 !important;
         width: auto !important;
     }
-    
     .sidebar .sidebar-menu li:hover ul {
         display: block;
     }
-
     .sidebar.shrink-sidebar .sidebar-menu li:hover ul {
         display: none;
     }
-    
     .sidebar .sidebar-menu li ul li {
         border-bottom: 1px solid #2e2e3a;
     }
-
     .sidebar.shrink-sidebar .sidebar-menu li ul li {
         border-bottom: none;
     }
-    
     .sidebar .sidebar-menu li ul li:last-child {
         border-bottom: none;
     }
-    
     .sidebar .sidebar-menu li:hover ul li a {
         padding-left: 2px;
     }
-
     .content {
         min-width: 90%;
     }
-
     .content.content.expand-content {
         min-width: 100%;
     }
-    
-
     .login-box {
         width: 75%;
     }
@@ -1195,64 +1239,55 @@ table tbody tr td {
         top: 0px;
         bottom: 0px !important;
     }
-
     .sidebar .avatar img {
         display: none;
     }
-
-    .sidebar .avatar p, 
+    .sidebar .avatar p,
     .sidebar .avatar span.small {
         display: none;
     }
-
     .sidebar.shrink-sidebar .avatar {
         text-align: center;
     }
-
     .sidebar.shrink-sidebar .avatar img {
         display: inline;
     }
-
-    .sidebar.shrink-sidebar .avatar p, 
+    .sidebar.shrink-sidebar .avatar p,
     .sidebar.shrink-sidebar .avatar span.small {
         display: block;
     }
-
-    .content{
+    .content {
         width: 100%;
         min-width: 100%;
     }
-
     .content.expand-content {
         width: 100%;
         min-width: 100%;
     }
-
-    .content.pl-0{
+    .content.pl-0 {
         padding-left: 30px !important;
         padding-right: 30px !important;
     }
-
     .card-chats {
         width: 100%;
     }
 }
 
 @media only screen and (max-width: 868px) {
-
-    .cont-1, .cont-2, .cont-3, .cont-4 {
+    .cont-1,
+    .cont-2,
+    .cont-3,
+    .cont-4 {
         display: initial;
     }
-
-    #card-chats, 
+    #card-chats,
     #card-all {
         margin-left: 0px !important;
     }
-
-    #card-chats, 
-    #card-all, 
-    .card-pro, 
-    .card-traffic, 
+    #card-chats,
+    #card-all,
+    .card-pro,
+    .card-traffic,
     .card-analytics,
     .card-calendar {
         display: block !important;
@@ -1261,26 +1296,21 @@ table tbody tr td {
         box-sizing: border-box;
         padding: 0px;
     }
-
     .login-box {
         width: 85%;
     }
-
     .profile-img {
         top: 100px;
     }
-
     .bio-header {
         margin-left: 0px;
     }
-
     .bio-header,
     .bio-comment {
         display: block;
-        min-width:100% !important;
+        min-width: 100% !important;
         text-align: center !important;
     }
-
     .bio-comment {
         padding: 5px 0px !important;
     }
@@ -1290,13 +1320,11 @@ table tbody tr td {
     .container-fluid {
         padding: 0px !important;
     }
-    
     .header.pt-3.pb-2 {
         display: initial;
         padding: 0px !important;
         margin: 0px !important;
     }
-
     .header-logo {
         display: block;
         min-width: 100%;
@@ -1305,35 +1333,29 @@ table tbody tr td {
         padding: 10px 7px;
         margin: 0px;
     }
-
-    .logo, .logo span.small {
+    .logo,
+    .logo span.small {
         color: #fff !important;
         font-size: 23px;
     }
-
     .header-menu {
         display: block;
         min-width: 100%;
         padding: 7px 5px 7px 15px !important;
         box-shadow: 0px 2px 2px 0px #ccc;
     }
-
     .menu-icon:first-child {
         margin: 5px 15px 0px 30px;
     }
-
     .sidebar {
         top: 0px;
     }
-
     .sidebar.shrink-sidebar .sidebar-menu li a {
         padding-left: 25px !important;
     }
-
     .sidebar.shrink-sidebar .sidebar-menu li a:hover {
         padding-left: 30px !important;
     }
-
     .login-box {
         width: 95%;
     }
@@ -1343,7 +1365,6 @@ table tbody tr td {
     .search-box {
         display: none;
     }
-
     .profile-img {
         top: 27%;
         left: 50%;
@@ -1356,20 +1377,28 @@ table tbody tr td {
         margin-top: 2.7rem !important;
     }
 }
-button.action{
+
+button.action {
     margin-left: 5px;
 }
-#galleries .form-row, #form-slide .form-row:nth-child(odd) {
+
+#galleries .form-row,
+#form-slide .form-row:nth-child(odd) {
     background-color: #f2f2f2;
 }
-#galleries .form-row, #form-slide .form-row:first-child{
+
+#galleries .form-row,
+#form-slide .form-row:first-child {
     background-color: #fff!important;
 }
-#galleries .form-row, #form-slide .form-row{
+
+#galleries .form-row,
+#form-slide .form-row {
     padding: 7px 0;
     font-size: 14px;
 }
-.remove{
+
+.remove {
     height: 30px;
     width: 30px;
     font-size: 14px;

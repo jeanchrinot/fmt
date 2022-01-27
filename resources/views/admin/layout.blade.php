@@ -30,6 +30,8 @@
     <!--Nice select -->
     <link rel="stylesheet" href="/assets/admin/css/nice-select.css">
 
+    @yield('styles')
+
     <title>@yield('title')</title>
 </head>
 

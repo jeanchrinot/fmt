@@ -6,7 +6,7 @@
 <section class="md-section bg-lighter">
 	<div class="container p-4">
 		<div class="row wow slideInRight">
-			<div class="col-7 section-title">
+			<div class="col-12 section-title">
 				<h1 class="text-muted section-title--styled">Activités / <span class="red">Evenements</span></h1>
 			</div>
 		</div>

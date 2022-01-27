@@ -15,7 +15,6 @@
     @include('includes.footer')
     <!--end footer-->
     @include('includes.scripts')
-    @yield('scripts')
 </body>
 
 </html>

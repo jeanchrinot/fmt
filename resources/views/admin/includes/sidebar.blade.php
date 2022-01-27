@@ -49,6 +49,12 @@
                 </li>
 
                 <li class="parent">
+                    <a href="{{ route('bourse-informations.index') }}"><i class="fa fa-tasks mr-3"> </i>
+                        <span class="none">Information de la bourse</span>
+                    </a>
+                </li>
+
+                <li class="parent">
                     <a href="#" onclick="toggle_menu('actuality'); return false" class=""><i class="fa fa-newspaper-o   
  mr-3"></i>
                         <span class="none">Actualités <i class="fa fa-angle-down pull-right align-bottom"></i></span>

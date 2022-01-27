@@ -19,6 +19,9 @@
           <a class="nav-link" href="/#about">Propos</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{{route('page.bourseInfo')}}">Bourses</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{{ route('page.actuality') }}">Actualités</a>
         </li>
         <li class="nav-item">

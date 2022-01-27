@@ -53,4 +53,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Deputy');
     }
+    public function getFullNameAttribute()
+    {
+        return ucfirst("{$this->name} {$this->surname}");
+    }
 }

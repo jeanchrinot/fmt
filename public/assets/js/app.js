@@ -1,7 +1,7 @@
-$(document).ready(function () {
+$(document).ready(function() {
     var forms = document.getElementsByClassName('needs-validation');
-    var validation = Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener('submit', function (event) {
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
             if (form.checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -9,9 +9,9 @@ $(document).ready(function () {
             form.classList.add('was-validated');
         }, false);
     });
-    let messageSuccess = $("#formSuccess").text() ;
+    let messageSuccess = $("#formSuccess").text();
     //After submit form
-    if(messageSuccess != "")  {
+    if (messageSuccess != "") {
         $("#formContact").modal();
     }
 
@@ -75,57 +75,57 @@ $(document).ready(function () {
 
 
     var index = new Swiper('.swiper-container', {
-        pagination: {
-            el: '.swiper-pagination',
-        },
+            pagination: {
+                el: '.swiper-pagination',
+            },
 
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 2000,
-        },
-    })
-    /*var madagascar = new Swiper('.madagascar', {
-        pagination: {
-            el: '.swiper-pagination-madagascar',
-        },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 2000,
+            },
+        })
+        /*var madagascar = new Swiper('.madagascar', {
+            pagination: {
+                el: '.swiper-pagination-madagascar',
+            },
 
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 2000,
-        },
-    })
-    var turkey = new Swiper('.turkey', {
-        pagination: {
-            el: '.swiper-pagination-turkey',
-        },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 2000,
+            },
+        })
+        var turkey = new Swiper('.turkey', {
+            pagination: {
+                el: '.swiper-pagination-turkey',
+            },
 
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 2000,
-        },
-    })
-    var international = new Swiper('.international', {
-        pagination: {
-            el: '.swiper-pagination-international',
-        },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 2000,
+            },
+        })
+        var international = new Swiper('.international', {
+            pagination: {
+                el: '.swiper-pagination-international',
+            },
 
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 2000,
-        },
-    })*/
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 2000,
+            },
+        })*/
 
     // var mySwiper = new Swiper('.activity', {
     // 	navigation: {
@@ -204,34 +204,19 @@ $(document).ready(function () {
     // 	}
     // 	]
     // });
-    new WOW().init();
+    //new WOW().init();
 
 
+    // Task Filter
 
-    var alive = true;
-    const  programmersLife = () =>{
-        while (alive)  {
-            eat();
-            code();
-            pray();
-            sleep = undefined;
-            gfs = true || false ;
-        }
-        return true;
-    }
-
-
-// Task Filter
-
-    $("#category").change(function () {
-      //  console.log("changed");
+    $("#category").change(function() {
+        //  console.log("changed");
         $value = this.value.toLowerCase();
         var url = window.location.href;
         $urlBase = url.substring(0, url.lastIndexOf("?"));
         //console.log($urlBase);
-         window.location.replace($urlBase + "?cat=" + $value);
-         console.log(url);
+        window.location.replace($urlBase + "?cat=" + $value);
+        console.log(url);
     });
 
 });
-

@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/slick.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/slick-theme.css">
-  <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+  {{-- <link rel="stylesheet" type="text/css" href="/assets/css/animate.css"> --}}
   <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
   @yield('styles')
 </head>

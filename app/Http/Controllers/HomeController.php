@@ -10,6 +10,7 @@ use App\Studentword;
 use App\User;
 use App\Contact;
 use App\Activity;
+use App\BourseInformation;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,7 @@ class HomeController extends Controller
 
         $contactArr = json_decode(json_encode($contacts), true);
 
+
         $assContact = array_filter($contactArr, function ($contact) {
             return ($contact['name'] == 'Association');
         });
@@ -41,35 +43,12 @@ class HomeController extends Controller
             return ($contact['name'] == 'Consulat');
         });
 
-        //dd($consulatContact);
-
         //$temp = json_decode(json_encode((object)$assContact[0]));
 
         $assContact = $this->toObject($assContact[0]);
         $consulatContact = $this->toObject($consulatContact[1]);
+        $bourseInfos = BourseInformation::orderBy("id", "desc")->limit(3)->get();
 
-        //dd($assContact->phone);
-
-
-        // dd($AssContact);
-
-        // Positions = Membre de bureau
-        //$positions = Position::all();
-        //dd(count($office_members));
-        // foreach ($office_members as $office) {
-        //     $test = $office;
-        //     break;
-        // }
-
-        // $pos = array();
-
-        // foreach ($test->positions as $position) {
-        //     $pos = $position;
-        //     break;
-        // }
-        // dd($pos);
-
-        //$about->dd();
         return view('index')->with([
             'sliders' => $sliders,
             'about' => $about,
@@ -79,7 +58,8 @@ class HomeController extends Controller
             'studentwords' => $studentwords,
             'office_members' => $office_members,
             'assContact' => $assContact,
-            'consulatContact' => $consulatContact
+            'consulatContact' => $consulatContact,
+            "bourseInfos" => $bourseInfos
         ]);
     }
 

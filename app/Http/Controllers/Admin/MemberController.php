@@ -74,7 +74,7 @@ class MemberController extends Controller
             $app_storage = config('app.storage');
             $image = $request->file("image");
             $ImageName = time() . "_" . $image->getClientOriginalName();
-            $imageDestination = public_path($app_storage."/user/");
+            $destinationPath = public_path($app_storage."/user/");
             $image->move($destinationPath, $ImageName);
 
             $uploadedImage = $destinationPath . $ImageName;
@@ -95,9 +95,6 @@ class MemberController extends Controller
             $passwordArray ?? [],
             $imageArray ?? []
         );
-
-        //dd($data['gender']);
-
 
         User::create([
             'name' => $data['name'],

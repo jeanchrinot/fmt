@@ -1,6 +1,5 @@
-$(document).ready(function () {
-
-    $("#memberType").change(function () {
+$(document).ready(function() {
+    $("#memberType").change(function() {
         let memberType = $(this).val();
         let currentType = $(this).attr('currentType');
         let editing = false;
@@ -24,7 +23,7 @@ $(document).ready(function () {
         }
     })
 
-    $("#actualite #categorie").change(function () {
+    $("#actualite #categorie").change(function() {
         let actualite = $(this).val();
 
         if (actualite == "Autre") {
@@ -45,8 +44,8 @@ $(document).ready(function () {
     /*===========Bootstrap 4 validation==================*/
 
     var forms = document.getElementsByClassName('needs-validation');
-    var validation = Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener('submit', function (event) {
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
             if (form.checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -56,50 +55,75 @@ $(document).ready(function () {
     });
 
     //Show message
-    $(".view_message").click(function () {
-        let id = $(this).attr("id");
-        let status = $("#status" + id);
+    $(".view_message").click(function() {
+            let id = $(this).attr("id");
+            let status = $("#status" + id);
 
-        $.ajax({
-            url: "message/" + id,
-            success: function (data) {
-                $("#nameSender").html(`${data.message.name} ${data.message.surname}`);
-                $("#email").html(data.message.email);
-                $("#phone").html(data.message.phone);
-                $("#subject").html(data.message.subject);
-                $("#messageContent").html(data.message.message);
+            $.ajax({
+                url: "message/" + id,
+                success: function(data) {
+                    $("#nameSender").html(`${data.message.name} ${data.message.surname}`);
+                    $("#email").html(data.message.email);
+                    $("#phone").html(data.message.phone);
+                    $("#subject").html(data.message.subject);
+                    $("#messageContent").html(data.message.message);
 
-                $("#details-modal").modal();
-                if (data.message.viewed == 1) {
-                    $(status).removeClass("badge-info").addClass("badge-success").html("lu");
+                    $("#details-modal").modal();
+                    if (data.message.viewed == 1) {
+                        $(status).removeClass("badge-info").addClass("badge-success").html("lu");
+                    }
                 }
-            }
+            })
         })
-    })
-    //Remove message
-    $(".delete_message").click(function () {
+        //Remove message
+    $(".delete_message").click(function() {
         let id = $(this).attr("id");
         $("#delete-modal").modal();
 
-        $("#confirm-delete").click(function () {
+        $("#confirm-delete").click(function() {
             let token = $(this).data("token");
             $.ajax({
                 url: "delete/message/" + id,
                 dataType: "json",
-                method:"post",
+                method: "post",
                 data: {
                     id: id,
                     _token: token
                 },
-                success: function (data) {
+                success: function(data) {
                     $("#delete-modal").modal("hide");
-                   window.location.reload()
+                    window.location.reload()
                 }
-            }) ;
+            });
         })
 
     });
 
+    //delete item when valid
+    $(".delete-item-btn").on("click", delete_item);
+
+    if ($(".summernote").length > 0) {
+        $('.summernote').summernote({
+            placeholder: 'Texte...',
+            tabsize: 2,
+            height: 500,
+            toolbar: [
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['codeview']]
+            ]
+        });
+    }
+    if ($(".datatable").length > 0) {
+        $('.datatable').DataTable();
+    }
+
+    if ($(".image").length > 0) {
+        $(".image").attr("accept", "image/png, image/gif, image/jpeg");
+    }
 
 });
 
@@ -123,7 +147,7 @@ function toggle_dropdown(elem) {
     $(elem).parent().children('.dropdown').toggleClass("animated flipInY");
 }
 
-$("body").not(document.getElementsByClassName('dropdown-toggle')).click(function () {
+$("body").not(document.getElementsByClassName('dropdown-toggle')).click(function() {
     if ($('.dropdown').hasClass('animated')) {
         //$('.dropdown').removeClass("animated flipInY");
     }
@@ -141,10 +165,62 @@ function toggle_menu(ele) {
 }
 
 function pageLoad() {
-    $.each($('.children'), function () {
+    $.each($('.children'), function() {
         let ele = localStorage.getItem('lastTab');
         if ($(this).attr('id') == ele) {
             $("#" + ele).slideDown("Normal");
+        }
+    });
+}
+
+function delete_item() {
+    let $data_url = $(this).data("url");
+    let rowId = $(this).data("id");
+
+    const rowItem = $(`#row_${rowId}`)
+
+    swal.fire({
+        title: "Emin misiniz?",
+        text: "Bu işlem için devam etmek ister misiniz?",
+        icon: "warning",
+        cancelButtonText: "Hayır",
+        confirmButtonText: 'Oui',
+        allowOutsideClick: false,
+        showDenyButton: true,
+        reverseButtons: true,
+        confirmButtonColor: '#45cb85',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: $data_url,
+                method: 'DELETE',
+                success: function(result) {
+                    let type = (result.type == "success") ? "success" : "error";
+                    const message = (type == "success") ? result.success : result.error;
+
+                    if (type) {
+                        swal.fire({
+                            title: type,
+                            text: message,
+                            icon: type
+                        })
+
+                        if (type == "success") {
+                            rowItem.remove();
+                        }
+                    }
+                },
+                error: function(data) {
+                    swal.fire({
+                        title: "Error",
+                        text: "Beklenmedik hata oluştu. Sonra tekrar deneyiniz.",
+                        icon: "error"
+                    })
+                }
+            })
         }
     });
 }

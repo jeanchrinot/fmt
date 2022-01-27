@@ -2,11 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\View;
-use App\Gallery;
 use App\Social;
+use App\Gallery;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,5 +33,9 @@ class AppServiceProvider extends ServiceProvider
         $socials = Social::where('id',1)->firstOrFail();
         View::share('footer_galleries', $footer_galleries);
         View::share('socials', $socials);
+
+        Blade::directive('format_date', function ($expression) {
+            return "<?php echo ($expression)->format('d/m/Y H:i'); ?>";
+        });
     }
 }

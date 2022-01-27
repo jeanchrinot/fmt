@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str;
+
 function getPosition($function_id)
 {
     $positions = ['Président', 'Vice-Président', 'Trésorier', 'Sécretaire Général', 'Conseiller Informatique'];
@@ -7,6 +9,32 @@ function getPosition($function_id)
     $position = $positions[$function_id - 1];
 
     return $position;
+}
+
+function format_date($date)
+{
+    return date("d-m-Y", strtotime($date));
+}
+
+function get_badge($class, $type, $colorTypes = ["danger", "success"], $text = ["Pasif", "Aktif"], $light = true)
+{
+    $colors = ["danger", "success", "warning", "info", "primary", "secondary", "dark"];
+
+    $result = '<span class="badge bg-light-warning text-warning w-100">Belirlenmemiş</span>';
+
+    if (count($colorTypes) == count($text)) {
+        foreach ($colorTypes as $index => $color) {
+            if (in_array($color, $colors)) {
+                if ($type == $index) {
+                    $result = $color;
+                    $light = $light == true ? "-light-" : "-";
+                    $result = '<span class="badge text-center bg' . $light . $color . ' text-' . $color . ' ' . $class . '">' . $text[$index] . '</span>';
+                }
+            }
+        }
+    }
+
+    return $result;
 }
 
 function getMemberType($type)
@@ -25,17 +53,20 @@ function getUserImage($path)
 
 function getImage($path)
 {
+    
     if ($path && file_exists('storage/' . $path)) {
         return asset('storage/' . $path);
+    } else if (Str::contains($path, ["http://", "https://"])) {
+        return $path;
     } else {
         return asset('assets/img/image-not-found.png');
     }
-
 }
 
 function province($id)
 {
-    $provinceArray = ['Adana', 'Adıyaman', 'Afyonkarahisar', 'Ağrı', 'Amasya', 'Ankara', 'Antalya', 'Artvin', 'Aydın',
+    $provinceArray = [
+        'Adana', 'Adıyaman', 'Afyonkarahisar', 'Ağrı', 'Amasya', 'Ankara', 'Antalya', 'Artvin', 'Aydın',
         'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa',
         'Çanakkale', 'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir',
         'Gaziantep', 'Giresun', 'Gümüşhane', 'Hakkâri', 'Hatay', 'Isparta', 'Mersin', 'İstanbul', 'İzmir',
@@ -159,3 +190,12 @@ function getDescription()
     return "Bienvenu sur la page de l’Union des Malagasy de Turquie, page dédiée surtout à faire connaître la vie et les activités de la diaspora Malagasy vivant en Turquie. Majoritairement composés d’étudiants universitaires, la diaspora Malagasy en Turquie est une petite communauté où tout le monde se connaît. Conscient de la difficulté à vivre à l’étranger et vu l’inexistence de d’Ambassade local, ces mêmes étudiants ont eu l’idée de créer un groupe initialement pour partager des informations mais aussi pour s’entraider entre eux. C’est là qu’est né l’Union des Malagasy de Turquie. A long terme, nous envisageons de faire de ce plateforme un outil permettant de lier Madagascar et la Turquie dans différents domaines.";
 }
 
+function deleteImage($image)
+{
+    if ($image && file_exists($image)) {
+        unlink($image);
+        return true;
+    }
+
+    return false;
+}

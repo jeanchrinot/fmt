@@ -1023,6 +1023,9 @@ select:focus {
     .navbar::before {
         background-color: #343a40!important;
     }
+    .section-title--styled {
+        font-size: 1.5rem!important;
+    }
 }
 
 @media only screen and (max-width: 926px) {
@@ -1068,7 +1071,7 @@ select:focus {
         margin-left: 10px;
     }
     .section-title {
-        padding: 15px 0;
+        padding: 15px;
     }
     .president-word {
         margin-top: 20px!important;
@@ -1137,6 +1140,10 @@ img.image-item:hover {
     font-family: Arial;
 }
 
+.bg-red {
+    background: #de281c;
+}
+
 .gallery-title {
     text-align: center;
     background-color: #de281c;
@@ -1148,16 +1155,20 @@ img.image-item:hover {
 #recently-viewed-items {
     list-style: none;
     text-decoration: none;
-    padding: 3px 10px;
+    padding: 3px 15px;
+    color: #fff;
+}
+
+#recently-viewed-items .year {
+    padding: 10px;
+}
+
+#recently-viewed-items li a {
+    color: #fff;
 }
 
 .block-content {
     padding: 3px;
-}
-
-.block-content .year {
-    margin: 3px auto;
-    border-bottom: 1px #ddd solid;
 }
 
 .block-content .year a {
@@ -1280,6 +1291,45 @@ footer .widget-contact__text {
     line-height: 1.4;
     color: #444;
     font-family: "Oswald", sans-serif;
+}
+
+div.long-text .row {
+    background: none !important;
+}
+
+.md-section {
+    min-height: 90vh;
+}
+
+.list-group-item {
+    background: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    padding-left: 0
+}
+
+.list-group-item:hover {
+    color: #de281c;
+}
+
+.list-group-item-action {
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+}
+
+.list-group-item.active {
+    background: none;
+    border-color: #de281c;
+    color: #de281c
+}
+
+.link {
+    text-decoration: none!important;
+    color: #534e4e;
+}
+
+.link:hover {
+    color: #de281c!important;
 }
 
 

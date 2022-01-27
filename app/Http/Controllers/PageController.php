@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
+use App\Actu;
+use App\BourseInformation;
 use App\Gallery;
 use App\Gallerycategory;
 use App\Video;
@@ -9,6 +12,9 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    private $paginate = 5;
+    private $limitOther = 5;
+
     public function gallery()
     {
         $pagination = 12;
@@ -60,54 +66,115 @@ class PageController extends Controller
 
     public function actuality(Request $request, $slug = null)
     {
-        if ($slug == null) {
-            $pagination = 6;
-            if (request()->cat) {
-                $cat = \App\Actucategory::where('slug', request()->cat)->firstOrFail();
-                $news = $cat->actus()->where('featured', true)->paginate($pagination);
-            } else {
-                $news = \App\Actu::where('featured', true)->paginate($pagination);
-            }
+        $data = $this->loadingData($slug, "App\Actu", "featured", "activites",request()->year);
 
+        if ($data["items"]) {
             $categories = \App\Actucategory::all();
             //dd($categories);
             return view('actuality')->with([
-                'news' => $news,
+                'news' => $data["items"],
                 'categories' => $categories,
             ]);
-        } else {
-            // Show one actuality
-            $new = \App\Actu::where(['slug' => $slug, 'featured' => true])->firstOrFail();
-            $others = \App\Actu::where([['slug', '!=', $slug], ['featured', true]])->get();
-
-            return view('single-actuality')->with(['new' => $new, 'others' => $others]);
+        } else if ($data["item-detail"]) {
+            return view("default-detail")->with($data["item-detail"]);
         }
     }
 
     public function activity(Request $request, $slug = null)
     {
-        if ($slug == null) {
-            $pagination = 4;
-            if (request()->year) {
-                $year = request()->year;
-                $events = \App\Activity::where('featured', true)->whereYear('activity_date', '=', date($year))->paginate($pagination);
-            } else {
-                $events = \App\Activity::where('featured', true)->paginate($pagination);
-            }
+        $data = $this->loadingData($slug, "App\Activity", "featured", "activites");
 
-            return view('activity')->with([
-                'events' => $events,
+        if ($data["items"]) {
+            return view("activity")->with([
+                'events' => $data["items"]
             ]);
-        } else {
-            $event = \App\Activity::where(['slug' => $slug, 'featured' => true])->firstOrFail();
-            $others = \App\Activity::where([['slug', '!=', $slug], ['featured', true]])->get();
-
-            return view('single-activity')->with(['event' => $event, 'others' => $others]);
+        } else if ($data["item-detail"]) {
+            return view("default-detail")->with($data["item-detail"]);
         }
     }
+
+    // public function activitya(Request $request, $slug = null)
+    // {
+    //     if ($slug == null) {
+    //         $pagination = 4;
+    //         if (request()->year) {
+    //             $year = request()->year;
+    //             $events = \App\Activity::where('featured', true)->whereYear('activity_date', '=', date($year))->paginate($pagination);
+    //         } else {
+    //             $events = \App\Activity::where('featured', true)->paginate($pagination);
+    //         }
+
+    //         return view('activity')->with([
+    //             'events' => $events,
+    //         ]);
+    //     } else {
+    //         $event = \App\Activity::where(['slug' => $slug, 'featured' => true])->firstOrFail();
+    //         $others = \App\Activity::where([['slug', '!=', $slug], ['featured', true]])->get();
+
+
+    //         return view('single-activity')->with(['event' => $event, 'others' => $others]);
+    //     }
+    // }
 
     public function bureau()
     {
         return view('bureau');
+    }
+
+    public function bourseInfo(Request $request, $slug = null)
+    {
+        $data = $this->loadingData($slug, "App\BourseInformation", "status", "information-bourse",);
+
+        if ($data["items"]) {
+            return view("bourse-infos")->with([
+                'bourseInfos' => $data["items"]
+            ]);
+        } else if ($data["item-detail"]) {
+            return view("default-detail")->with($data["item-detail"]);
+        }
+    }
+
+    private function loadingData($slug = null, $modelName, $statusColumn, $baseUrl,$year=null)
+    {
+        $others = [];
+        $recents = [];
+        $results = [];
+        $items = [];
+        $item = [];
+
+        dd($year);
+        $results["items"] = $items;
+        $results["item-detail"] = $item;
+
+        $model = new $modelName();
+
+        if ($slug == null) {
+            if ($year) {
+                $year = $year;
+                $items = $model->where($statusColumn, true)->whereYear('created_at', '=', date($year))->paginate($this->paginate);
+            } else {
+                $items = $model->where($statusColumn, true)->orderBy("id", "desc")->paginate($this->paginate);
+            }
+            $results["items"] = $items;
+        } else {
+            $item = $model->where(['slug' => $slug, $statusColumn => true])->firstOrFail();
+            if ($model->count() > $this->limitOther) {
+                $others = $model->where("slug", "!=", $slug)->orderBy("id", "desc")->limit($this->limitOther)->get();
+                $recents =  $model->where("slug", "!=", $slug)->whereNotIn("id",  $others->pluck("id"))->orderBy("id", "desc")->limit($this->limitOther)->get();
+            } else {
+                $recents =  $model->where("slug", "!=", $slug)->orderBy("id", "desc")->limit($this->limitOther)->get();
+            }
+
+            $results["item-detail"] = [
+                'image' => $item->image,
+                'title' => $item->title??$item->name,
+                "longText" => $item->text ?? $item->details,
+                'others' => $others,
+                "recents" => $recents,
+                "baseUrl" => $baseUrl
+            ];
+        }
+
+        return $results;
     }
 }
