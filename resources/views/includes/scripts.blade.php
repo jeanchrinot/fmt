@@ -11,6 +11,8 @@
 
 <script src="/assets/js/slick.min.js"></script>
 
+
 {{-- <script src="/assets/js/wow.min.js"></script> --}}
 @yield('scripts')
+
 <script src="/assets/js/app.js"></script>

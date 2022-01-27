@@ -8,7 +8,7 @@
 @section('title','Membres de Bureau')
 
 @section('main')
-<section class="md-section bg-lighter">
+<section class="md-section page-wrapper bg-lighter">
 	<div class="container p-4">
 		<div class="row wow slideInRight">
 			<div class="col-7 section-title">

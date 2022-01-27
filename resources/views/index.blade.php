@@ -47,7 +47,7 @@
         <section id="actuality" class="p-5">
             <div class="container">
                 <div class="section-title text-center">
-                    <h2 class="wow slideInLeft">INFORMATION DE LA / <span class="red">BOURSES</span></h2>
+                    <h2 class="wow slideInLeft">ANNONCES DE / <span class="red">BOURSE</span></h2>
                     <span class="bordered-icon"><i class="fa fa-info"></i></span>
                 </div>
                 <div class="section-content">
@@ -63,12 +63,13 @@
                                         </div>
                                     </div>
                                     <div class="entry-content p-20 pr-10 bg-white">
-                                        <div class="entry-meta media mt-0 no-bg no-border">
-                                            <div class="media-body pl-15">
+                                        <div class="entry-meta media mt-0 p-0 ml-0 no-bg no-border">
+                                            <div class="media-body ">
                                                 <div class="event-content pull-left flip">
                                                     <h4 class="entry-title text-white text-uppercase m-0">
-                                                        <a
-                                                            href="{{ route('page.bourseInfo', $bourseInfo->slug) }}">{{ $bourseInfo->title }}</a>
+                                                        <a href="{{ route('page.bourseInfo', $bourseInfo->slug) }}">
+                                                            {{ $bourseInfo->title }}
+                                                        </a>
                                                     </h4>
                                                 </div>
                                             </div>
@@ -523,27 +524,20 @@
     </section>
     <!--end contact-->
 
-    <div id="formContact" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Message du serveur :</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Message envoyé avec succès !</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="/assets/js/count-down.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- <script type="text/javascript" src="/assets/js/count-down.js"></script> --}}
+    @if (session('success'))
+        <script>
+            swal.fire({
+                title: "Success",
+                text: "Message envoyé avec succès !",
+                icon: "success",
+                confirmButtonColor: '#45cb85',
+            })
+        </script>
+    @endif
 @endsection
+

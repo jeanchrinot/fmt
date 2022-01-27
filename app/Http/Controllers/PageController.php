@@ -12,8 +12,9 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    private $paginate = 5;
     private $limitOther = 5;
+    private $limitRecent = 8;
+    private $paginate = 6;
 
     public function gallery()
     {
@@ -33,14 +34,19 @@ class PageController extends Controller
 
         $gallery_categories = GalleryCategory::where('featured', true)->get();
 
+        $dates = Gallery::pluck("created_at");
+
+        $years = $this->getYearsArray($dates);
+
         //dd($gallery_categories);
 
         return view('gallery')->with([
             'galleries' => $galleries,
             'categories' => $gallery_categories,
+            "years" => $years
         ]);
     }
-    public function video(Request $request)
+    public function video()
     {
         $pagination = 4;
 
@@ -58,123 +64,190 @@ class PageController extends Controller
 
         $gallery_categories = GalleryCategory::where('featured', true)->get();
 
+        $dates = Gallery::pluck("created_at");
+
+        $years = $this->getYearsArray($dates);
+
         return view('video')->with([
             'videos' => $videos,
             'categories' => $gallery_categories,
+            "years" => $years
         ]);
     }
 
-    public function actuality(Request $request, $slug = null)
+    public function actuality($slug = null)
     {
-        $data = $this->loadingData($slug, "App\Actu", "featured", "activites",request()->year);
+        $others = [];
+        $recents = [];
+        $categories = [];
 
-        if ($data["items"]) {
+        if ($slug == null) {
             $categories = \App\Actucategory::all();
-            //dd($categories);
+            $pagination = 6;
+            if (request()->cat) {
+                $cat = \App\Actucategory::where('slug', request()->cat)->firstOrFail();
+                $news = $cat->actus()->where('featured', true)->paginate($pagination);
+            } else {
+                $news = \App\Actu::where('featured', true)->paginate($pagination);
+            }
+
             return view('actuality')->with([
-                'news' => $data["items"],
+                'news' => $news,
                 'categories' => $categories,
             ]);
-        } else if ($data["item-detail"]) {
-            return view("default-detail")->with($data["item-detail"]);
+        } else {
+            // Show one actuality
+            $new = Actu::where(['slug' => $slug, 'featured' => true])->firstOrFail();
+
+            $actives = Actu::where("featured", true);
+
+            if ($actives->count() > $this->limitOther) {
+                $others = $actives->where("slug", "!=", $slug)
+                    ->orderBy("id", "desc")
+                    ->limit($this->limitOther)
+                    ->get();
+
+                $recents = $actives->skip($this->limitOther)
+                    ->limit($this->limitRecent)
+                    ->get();
+            } else {
+                $recents = $actives->limit($this->limitRecent)->get();
+            }
+
+            return view("default-detail")->with([
+                'image' => $new->image,
+                'title' => $new->title ?? $new->name,
+                "longText" => $new->text ?? $new->details,
+                'others' => $others,
+                "recents" => $recents,
+                "baseUrl" => "actualites"
+            ]);
         }
     }
 
     public function activity(Request $request, $slug = null)
     {
-        $data = $this->loadingData($slug, "App\Activity", "featured", "activites");
+        $others = [];
+        $recents = [];
 
-        if ($data["items"]) {
-            return view("activity")->with([
-                'events' => $data["items"]
+        if ($slug == null) {
+            $pagination = 4;
+            if (request()->year) {
+                $year = request()->year;
+                $events = \App\Activity::where('featured', true)->whereYear('activity_date', '=', date($year))->paginate($pagination);
+            } else {
+                $events = \App\Activity::where('featured', true)->paginate($pagination);
+            }
+
+            $dates = Activity::pluck("activity_date");
+
+            $years = $this->getYearsArray($dates);
+
+            return view('activity')->with([
+                'events' => $events,
+                "years" => $years
             ]);
-        } else if ($data["item-detail"]) {
-            return view("default-detail")->with($data["item-detail"]);
+        } else {
+            // Show one activity
+            $event = Activity::where(['slug' => $slug, 'featured' => true])->firstOrFail();
+
+            $actives = Activity::where("featured", true);
+
+            $this->limitOther=5;
+
+            if ($actives->count() > $this->limitOther) {
+                $others = $actives->where("slug", "!=", $slug)
+                    ->orderBy("id", "desc")
+                    ->limit($this->limitOther)
+                    ->get();
+
+                $recents = $actives->skip($this->limitOther)
+                    ->limit($this->limitRecent)
+                    ->get();
+            } else {
+                $recents = $actives->limit($this->limitRecent)->get();
+            }
+
+            return view("default-detail")->with([
+                'image' => $event->image,
+                'title' => $event->title ?? $event->name,
+                "longText" => $event->text ?? $event->details,
+                'others' => $others,
+                "recents" => $recents,
+                "baseUrl" => "activites"
+            ]);
         }
     }
-
-    // public function activitya(Request $request, $slug = null)
-    // {
-    //     if ($slug == null) {
-    //         $pagination = 4;
-    //         if (request()->year) {
-    //             $year = request()->year;
-    //             $events = \App\Activity::where('featured', true)->whereYear('activity_date', '=', date($year))->paginate($pagination);
-    //         } else {
-    //             $events = \App\Activity::where('featured', true)->paginate($pagination);
-    //         }
-
-    //         return view('activity')->with([
-    //             'events' => $events,
-    //         ]);
-    //     } else {
-    //         $event = \App\Activity::where(['slug' => $slug, 'featured' => true])->firstOrFail();
-    //         $others = \App\Activity::where([['slug', '!=', $slug], ['featured', true]])->get();
-
-
-    //         return view('single-activity')->with(['event' => $event, 'others' => $others]);
-    //     }
-    // }
 
     public function bureau()
     {
         return view('bureau');
     }
 
-    public function bourseInfo(Request $request, $slug = null)
-    {
-        $data = $this->loadingData($slug, "App\BourseInformation", "status", "information-bourse",);
-
-        if ($data["items"]) {
-            return view("bourse-infos")->with([
-                'bourseInfos' => $data["items"]
-            ]);
-        } else if ($data["item-detail"]) {
-            return view("default-detail")->with($data["item-detail"]);
-        }
-    }
-
-    private function loadingData($slug = null, $modelName, $statusColumn, $baseUrl,$year=null)
+    public function bourseInfo($slug = null)
     {
         $others = [];
         $recents = [];
-        $results = [];
-        $items = [];
-        $item = [];
 
-        dd($year);
-        $results["items"] = $items;
-        $results["item-detail"] = $item;
+        $year = request()->year;
 
-        $model = new $modelName();
+        $actives = BourseInformation::where("status", true);
 
-        if ($slug == null) {
+        if (is_null($slug)) {
             if ($year) {
                 $year = $year;
-                $items = $model->where($statusColumn, true)->whereYear('created_at', '=', date($year))->paginate($this->paginate);
+                $bourseInfos = $actives->whereYear('created_at', '=', date($year))->paginate($this->paginate);
             } else {
-                $items = $model->where($statusColumn, true)->orderBy("id", "desc")->paginate($this->paginate);
-            }
-            $results["items"] = $items;
-        } else {
-            $item = $model->where(['slug' => $slug, $statusColumn => true])->firstOrFail();
-            if ($model->count() > $this->limitOther) {
-                $others = $model->where("slug", "!=", $slug)->orderBy("id", "desc")->limit($this->limitOther)->get();
-                $recents =  $model->where("slug", "!=", $slug)->whereNotIn("id",  $others->pluck("id"))->orderBy("id", "desc")->limit($this->limitOther)->get();
-            } else {
-                $recents =  $model->where("slug", "!=", $slug)->orderBy("id", "desc")->limit($this->limitOther)->get();
+                $bourseInfos = $actives->orderBy("id", "desc")->paginate($this->paginate);
             }
 
-            $results["item-detail"] = [
-                'image' => $item->image,
-                'title' => $item->title??$item->name,
-                "longText" => $item->text ?? $item->details,
+            $dates = BourseInformation::pluck("created_at");
+
+            $years = $this->getYearsArray($dates);
+
+            return view("bourse-infos", compact("bourseInfos", "years"));
+        } else {
+            $bourseInfo = BourseInformation::where("slug", $slug)
+                ->where("status", true)
+                ->firstOrFail();
+
+            if ($actives->count() > $this->limitOther) {
+                $others = $actives->where("slug", "!=", $slug)
+                    ->orderBy("id", "desc")
+                    ->limit($this->limitOther)
+                    ->get();
+
+                $recents = $actives->skip($this->limitOther)
+                    ->limit($this->limitRecent)
+                    ->get();
+            } else {
+                $recents = $actives->limit($this->limitRecent)->get();
+            }
+
+            return view("default-detail")->with([
+                'image' => $bourseInfo->image,
+                'title' => $bourseInfo->title ?? $bourseInfo->name,
+                "longText" => $bourseInfo->text ?? $bourseInfo->details,
                 'others' => $others,
                 "recents" => $recents,
-                "baseUrl" => $baseUrl
-            ];
+                "baseUrl" => "information-bourse"
+            ]);
+        }
+    }
+
+    private function getYearsArray($dates = [])
+    {
+        $years = [];
+
+        if (count($dates)) {
+            foreach ($dates as $date) {
+                $years[] = date("Y", strtotime($date));
+            }
         }
 
-        return $results;
+        $years = array_unique($years);
+        rsort($years);
+
+        return $years;
     }
 }

@@ -1,6 +1,8 @@
 $(document).ready(function() {
+    loading();
+
     var forms = document.getElementsByClassName('needs-validation');
-    var validation = Array.prototype.filter.call(forms, function(form) {
+    Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(event) {
             if (form.checkValidity() === false) {
                 event.preventDefault();
@@ -9,11 +11,6 @@ $(document).ready(function() {
             form.classList.add('was-validated');
         }, false);
     });
-    let messageSuccess = $("#formSuccess").text();
-    //After submit form
-    if (messageSuccess != "") {
-        $("#formContact").modal();
-    }
 
     $('.gallery').magnificPopup({
         delegate: 'a',
@@ -220,3 +217,8 @@ $(document).ready(function() {
     });
 
 });
+
+function loading() {
+    $(".loading-box").remove();
+    $(".page-wrapper.d-none").removeClass("d-none");
+}

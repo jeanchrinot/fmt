@@ -61,13 +61,6 @@ $title = $new->title;
                             @endforeach
                         </div>
                     @endif
-
-                    {{-- <div class="sidebar-gallery">
-                        <div class="gallery-title p-2">Voir aussi</div>
-                        <div class="block-content">
-
-                        </div>
-                    </div> --}}
                 </aside>
             </div>
         </div>

@@ -40,6 +40,20 @@
 
                 <div class="form-row">
                     <div class="col-md-12 mb-2">
+                        <label for="status">Status <span class="text-danger">*</span></label>
+                        <select name="status" id="status" class="form-control" required>
+                            <option value="">choisissez</option>
+                            <option value="0" @if($bourseInfo->status==0) selected @endif>Passif</option>
+                            <option value="1" @if($bourseInfo->status==1) selected @endif>Actif</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Veuillez choisir le passif ou actif 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-12 mb-2">
                         <label for="title">Titre <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="title" placeholder="title" name="title"
                             value="{{ $bourseInfo->title }}" required>

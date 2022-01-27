@@ -23,9 +23,15 @@
                     <div class="card-header bg-transparent d-flex justify-content-between">
                         <h5 class="text-capitalize mt-2">{{ $bourseInfo->title }}</h5>
                         <div class="text-center">
+                            <a href="{{ route('page.bourseInfo', $bourseInfo->slug) }}"
+                                class="action btn btn-info text-white"
+                                target="_blank">
+                                <i class="fa fa-external-link"></i>
+                            </a>
                             <a href="{{ route('bourse-informations.edit', $bourseInfo->id) }}"
-                                class="action btn btn-success text-white"><i
-                                    class="fa fa-pencil"></i></a>
+                                class="action btn btn-success text-white">
+                                <i class="fa fa-pencil"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="card-body">

@@ -32,7 +32,13 @@ class ContactFormController extends Controller
 			'message' => $data['message']
 		]);
 
-		$receivers =["olvanotpoint@gmail.com","jean.chrinot@gmail.com","edinogeraldinbelalahy@gmail.com"];
+		$receivers =[
+			"olvanotpoint@gmail.com",
+			// "jean.chrinot@gmail.com",
+			// "edinogeraldinbelalahy@gmail.com",
+			// "malagasyetotorkia@gmail.com"
+		];
+
 
 		Mail::to($receivers)->send(new MessageRequested($contactUs));
 

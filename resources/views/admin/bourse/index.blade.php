@@ -61,7 +61,11 @@
                                                 <img src="{{ getImage($bourseInfo->image) }}" width="50" height="50"
                                                     class=" rounded-circle" alt="Photo">
                                             </td>
-                                            <td class="align-middle">{{ $bourseInfo->title }}</td>
+                                            <td class="align-middle">
+                                                <a href="{{route('page.bourseInfo',$bourseInfo->slug)}}" class="text-info text-capitalize" target="_blank">
+                                                    {{ $bourseInfo->title }}
+                                                </a>
+                                            </td>
                                             <td class="align-middle">{{ $bourseInfo->truncate }}</td>
 
                                             <td class="d-flex align-middle justify-content-center">

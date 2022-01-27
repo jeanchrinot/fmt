@@ -1121,14 +1121,15 @@ select:focus {
 
 /*======gallery===============*/
 
-#galllery {
+
+/* #galllery {
     padding: 7px;
     margin-top: 10px;
 }
 
 #gallery .card-img {
     margin: 7px;
-}
+} */
 
 img.image-item:hover {
     color: #17a8b4;
@@ -1293,11 +1294,11 @@ footer .widget-contact__text {
     font-family: "Oswald", sans-serif;
 }
 
-div.long-text .row {
+div.long-text>* {
     background: none !important;
 }
 
-.md-section {
+.page-wrapper {
     min-height: 90vh;
 }
 
@@ -1330,6 +1331,10 @@ div.long-text .row {
 
 .link:hover {
     color: #de281c!important;
+}
+
+.loading-box {
+    min-height: 80vh;
 }
 
 

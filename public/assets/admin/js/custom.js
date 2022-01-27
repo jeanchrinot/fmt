@@ -25,7 +25,6 @@ $(document).ready(function() {
 
     $("#actualite #categorie").change(function() {
         let actualite = $(this).val();
-
         if (actualite == "Autre") {
             $("#otherCategorie").show()
         } else {
@@ -118,7 +117,9 @@ $(document).ready(function() {
         });
     }
     if ($(".datatable").length > 0) {
-        $('.datatable').DataTable();
+        $('.datatable').DataTable({
+            "ordering": false
+        });
     }
 
     if ($(".image").length > 0) {
@@ -224,7 +225,6 @@ function delete_item() {
         }
     });
 }
-
 //pageLoad();
 
 /*==== Sidebar toggle navigation show and hide =====*/

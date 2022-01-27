@@ -3,7 +3,7 @@
 @section('title', 'Actualités')
 
 @section('main')
-    <section class="md-section bg-lighter">
+    <section class="md-section page-wrapper  bg-lighter">
         <div class="container p-4">
             <div class="row wow slideInRight">
                 <div class="col-6 col-md-7 section-title">
@@ -65,7 +65,6 @@
                     </div>
                 @empty
                     @component('components.empty-result')
-
                     @endcomponent
                 @endforelse
                 <div class="col-12">
