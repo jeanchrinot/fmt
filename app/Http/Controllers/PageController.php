@@ -102,16 +102,16 @@ class PageController extends Controller
             $actives = Actu::where("featured", true);
 
             if ($actives->count() > $this->limitOther) {
-                $others = $actives->where("slug", "!=", $slug)
+                $recents = $actives->where("slug", "!=", $slug)
                     ->orderBy("id", "desc")
                     ->limit($this->limitOther)
                     ->get();
 
-                $recents = $actives->skip($this->limitOther)
+                $others = $actives->skip($this->limitOther)
                     ->limit($this->limitRecent)
                     ->get();
             } else {
-                $recents = $actives->limit($this->limitRecent)->get();
+                $recents = $actives->where("slug", "!=", $slug)->limit($this->limitRecent)->get();
             }
 
             return view("default-detail")->with([
@@ -125,7 +125,7 @@ class PageController extends Controller
         }
     }
 
-    public function activity(Request $request, $slug = null)
+    public function activity($slug = null)
     {
         $others = [];
         $recents = [];
@@ -134,9 +134,9 @@ class PageController extends Controller
             $pagination = 4;
             if (request()->year) {
                 $year = request()->year;
-                $events = \App\Activity::where('featured', true)->whereYear('activity_date', '=', date($year))->paginate($pagination);
+                $events = Activity::where('featured', true)->whereYear('activity_date', '=', date($year))->paginate($pagination);
             } else {
-                $events = \App\Activity::where('featured', true)->paginate($pagination);
+                $events = Activity::where('featured', true)->paginate($pagination);
             }
 
             $dates = Activity::pluck("activity_date");
@@ -153,19 +153,17 @@ class PageController extends Controller
 
             $actives = Activity::where("featured", true);
 
-            $this->limitOther=5;
-
             if ($actives->count() > $this->limitOther) {
-                $others = $actives->where("slug", "!=", $slug)
+                $recents = $actives->where("slug", "!=", $slug)
                     ->orderBy("id", "desc")
                     ->limit($this->limitOther)
                     ->get();
 
-                $recents = $actives->skip($this->limitOther)
+                $others = $actives->skip($this->limitOther)
                     ->limit($this->limitRecent)
                     ->get();
             } else {
-                $recents = $actives->limit($this->limitRecent)->get();
+                $recents = $actives->where("slug", "!=", $slug)->limit($this->limitRecent)->get();
             }
 
             return view("default-detail")->with([
@@ -195,7 +193,6 @@ class PageController extends Controller
 
         if (is_null($slug)) {
             if ($year) {
-                $year = $year;
                 $bourseInfos = $actives->whereYear('created_at', '=', date($year))->paginate($this->paginate);
             } else {
                 $bourseInfos = $actives->orderBy("id", "desc")->paginate($this->paginate);
@@ -212,16 +209,16 @@ class PageController extends Controller
                 ->firstOrFail();
 
             if ($actives->count() > $this->limitOther) {
-                $others = $actives->where("slug", "!=", $slug)
+                $recents = $actives->where("slug", "!=", $slug)
                     ->orderBy("id", "desc")
                     ->limit($this->limitOther)
                     ->get();
 
-                $recents = $actives->skip($this->limitOther)
+                $others = $actives->skip($this->limitOther)
                     ->limit($this->limitRecent)
                     ->get();
             } else {
-                $recents = $actives->limit($this->limitRecent)->get();
+                $recents = $actives->where("slug", "!=", $slug)->limit($this->limitRecent)->get();
             }
 
             return view("default-detail")->with([

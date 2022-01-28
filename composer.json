@@ -26,15 +26,16 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform-check": false
     },
     "extra": {
         "laravel": {
-            "dont-discover": [ "laravel/dusk"]
+            "dont-discover": ["laravel/dusk"]
         }
     },
     "autoload": {
-        "files":[
+        "files": [
             "app/helpers.php"
         ],
         "psr-4": {
