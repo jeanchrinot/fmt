@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    if ($(".tiny").length > 0) {
+        loadTinymce();
+    }
+
     $("#memberType").change(function() {
         let memberType = $(this).val();
         let currentType = $(this).attr('currentType');
@@ -228,3 +232,14 @@ function delete_item() {
 //pageLoad();
 
 /*==== Sidebar toggle navigation show and hide =====*/
+
+function loadTinymce() {
+    tinymce.init({
+        selector: '.tiny',
+        toolbar_mode: 'floating',
+        height: 500,
+        plugins: 'link image code',
+        relative_urls: true,
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:12px }'
+    });
+}

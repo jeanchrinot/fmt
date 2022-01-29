@@ -34,8 +34,6 @@
                     @method('PATCH')
                 @endisset
 
-
-
                 @php
 
                     if(old('status')){
@@ -81,7 +79,7 @@
                     </div>
                     <div class="col-md-12 mb-2">
                         <label for="description-slide-1">Détails <span class="text-danger">*</span></label>
-                        <textarea rows="5" type="text" class="form-control" name="details" id="details"
+                        <textarea rows="5" type="text" class="form-control tiny" name="details" id="details"
                                   required>{{ old('details') ?? ($actu->details ?? '') }}</textarea>
                         <div class="invalid-feedback">
                             Veuillez remplir le détails
@@ -140,3 +138,5 @@
     </main>
     <!--Main-->
 @endsection
+
+@include("components.plugin.tinymce")

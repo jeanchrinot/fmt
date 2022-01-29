@@ -1,8 +1,5 @@
 @extends('admin.layout')
 @section('title', 'Nouveau Information de la bourse')
-@section('styles')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-@endsection
 
 @section('main')
     <!--Content right-->
@@ -89,19 +86,4 @@
     <!--Main-->
 @endsection
 
-
-@section('scripts')
-    <script src="https://cdn.tiny.cloud/1/9u3v7hits4bsnde0wfll95hrlmguq1ai0dj4st4ufa8syejj/tinymce/5/tinymce.min.js"
-        referrerpolicy="origin"></script>
-
-    <script>
-        tinymce.init({
-            selector: '.tiny',
-            toolbar_mode: 'floating',
-            height: 500,
-            plugins: 'link image code',
-            relative_urls: true,
-            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:12px }'
-        });
-    </script>
-@endsection
+@include("components.plugin.tinymce")
