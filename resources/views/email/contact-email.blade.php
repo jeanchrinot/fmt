@@ -46,7 +46,7 @@
     @endphp
     <div class="container">
         <div class="title-section">
-            <h2>{{ $data->subject != null ? $data->subject . ' | ' : '' }} Fiombonan'ny Malagasy Eto Torkia</h2>
+            <h3>{{ $data->subject != null ? $data->subject . ' | ' : '' }} Fiombonan'ny Malagasy Eto Torkia</h3>
         </div>
 
         <div class="message-header">

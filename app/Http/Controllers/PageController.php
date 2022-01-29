@@ -81,7 +81,7 @@ class PageController extends Controller
         $recents = [];
         $categories = [];
 
-        if ($slug == null) {
+        if (is_null($slug)) {
             $categories = \App\Actucategory::all();
             $pagination = 6;
             if (request()->cat) {
@@ -130,7 +130,7 @@ class PageController extends Controller
         $others = [];
         $recents = [];
 
-        if ($slug == null) {
+        if (is_null($slug)) {
             $pagination = 4;
             if (request()->year) {
                 $year = request()->year;
